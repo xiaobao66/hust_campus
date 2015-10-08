@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>电费查询</title>
+    <link rel="stylesheet" type="text/css" href="styles/show.css">
+</head>
+
+<body>
+    <section class="loading">
+        <div>
+            <i></i>
+            <p>数据载入中...</p>
+        </div>
+    </section>
+    <section class="show-elec">
+        <header>
+            <!-- <a href="javascript:;" id="quit-inquire">退出</a> -->
+            <span>查电费</span>
+            <a href="javascript:;" id="change-dom">切换寝室</a>
+        </header>
+        <div id="surplus-elec">
+            <p>
+                <span id="surplus-number"></span>
+            </p>
+        </div>
+        <p id="elec-info">电费满满哒,空调随便使用哦!</p>
+        <div class="average-elec">
+            <p>日均用电
+                <br><span id="aver-number">2.5</span>
+                <br>kw-h</p>
+        </div>
+        <p id="trend-title">最近7日用电趋势</p>
+        <div id="elec-trend"></div>
+    </section>
+    <script type="text/javascript" src="scripts/lib/jquery.js"></script>
+    <script type="text/javascript" src="scripts/lib/echarts-all.js"></script>
+    <script type="text/javascript" src="scripts/lib/sea.js"></script>
+    <script type="text/javascript" src="scripts/src/show-config.js"></script>
+</body>
+
+</html>

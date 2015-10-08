@@ -9,75 +9,50 @@
 </head>
 
 <body>
-    <div>
-        <header>
-            <!-- <a href="javascript:;" id="quit-inquire">退出</a> -->
-            <span>设置宿舍</span>
-            <!-- <a href="javascript:;" id="change-dom">切换</a> -->
-        </header>
-        <section id="main">
-            <section class="set-dom">
-                <i class="logo-dom-logo"></i>
-                <section class="dom-form">
-                    <div class="dom-form-item">
-                        <i class="logo-area-logo"></i>
-                        <div type="text" name="area" id="area" class="origin-input">请选择区域,如:东区</div>
-                        <ul id="dom-area">
-                            <li value="东区">东区</li>
-                            <li value="西区">西区</li>
-                            <li value="韵苑">韵苑</li>
-                            <li value="紫菘">紫菘</li>
-                        </ul>
-                    </div>
-                    <div class="dom-form-item">
-                        <i class="logo-building-logo"></i>
-                        <input type="text" name="build" id="build" placeholder="请输入楼栋号,如:13">
-                    </div>
-                    <div class="dom-form-item">
-                        <i class="logo-room-logo"></i>
-                        <input type="text" name="room" id="room" placeholder="请输入房间号,如:212">
-                    </div>
-                    <div class="dom-form-item">
-                        <a href="javascript:;" id="submit-button">确定</a>
-                    </div>
-                </section>
-            </section>
-        </section>
-        <section class="loading">
-            <div>
-                <i></i>
-                <p>加载中...</p>
+    <header>
+        <!-- <a href="javascript:;" id="quit-inquire">退出</a> -->
+        <span>设置宿舍</span>
+        <!-- <a href="javascript:;" id="change-dom">切换</a> -->
+    </header>
+    <section class="set-dom">
+        <i class="logo-campus"></i>
+        <section class="dom-form">
+            <div class="dom-form-item">
+                <i class="logo-area"></i>
+                <div name="area" id="area" class="origin-input">请选择区域,如:东区</div>
+                <ul id="dom-area">
+                    <li value="东区">东区</li>
+                    <li value="西区">西区</li>
+                    <li value="韵苑">韵苑</li>
+                    <li value="紫菘">紫菘</li>
+                </ul>
             </div>
-            <div class="loading-info">
-                <span></span>
-                <p id="loading-text"></p>
+            <div class="dom-form-item">
+                <i class="logo-building"></i>
+                <input type="text" name="build" id="build" placeholder="请输入楼栋号,如:13">
+            </div>
+            <div class="dom-form-item">
+                <i class="logo-room"></i>
+                <input type="text" name="room" id="room" placeholder="请输入房间号,如:212">
+            </div>
+            <div class="dom-form-item">
+                <a href="javascript:;" id="submit-button">确定</a>
             </div>
         </section>
-        <section class="show-elec backTo">
-            <header>
-                <!-- <a href="javascript:;" id="quit-inquire">退出</a> -->
-                <span>查电费</span>
-                <a href="javascript:;" id="change-dom">切换寝室</a>
-            </header>
-            <div id="surplus-elec">
-                <p>
-                    <span id="surplus-number"></span>
-                </p>
-            </div>
-            <p id="elec-info">电费满满哒,空调随便使用哦!</p>
-            <div class="average-elec">
-                <p>日均用电
-                    <br><span id="aver-number">2.5</span>
-                    <br>kw-h</p>
-            </div>
-            <p id="trend-title">最近7日用电趋势</p>
-            <div id="elec-trend"></div>
-        </section>
-    </div>
+    </section>
+    <section class="loading">
+        <div>
+            <i></i>
+            <p>查询中...</p>
+        </div>
+        <div class="loading-info">
+            <span></span>
+            <p id="loading-text"></p>
+        </div>
+    </section>
     <script type="text/javascript" src="scripts/lib/jquery.js"></script>
-    <script type="text/javascript" src="scripts/lib/echarts-all.js"></script>
     <script type="text/javascript" src="scripts/lib/sea.js"></script>
-    <script type="text/javascript" src="scripts/src/seajs-config.js"></script>
+    <script type="text/javascript" src="scripts/src/index-config.js"></script>
 </body>
 
 </html>

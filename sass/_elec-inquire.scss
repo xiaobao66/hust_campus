@@ -1,5 +1,40 @@
-@import "compass/utilities/sprites";
-@import "logo/*.png";
+// @import "compass/utilities/sprites";
+// @import "logo/*.png";
 
-$logo-sprite-dimensions: true;
+// $logo-sprite-dimensions: true;
 
+// @include all-logo-sprites();
+@import "compass/css3";
+$fontSize: 10px;
+
+.logo-campus {
+	background-image: image-url("logo/campus.png");
+	@include background-size(contain);
+	background-repeat: no-repeat;
+	width: $fontSize * 8.5;
+	height: $fontSize * 8.5;
+}
+
+.logo-area {
+	background-image: image-url("logo/area.png");
+	@include background-size(contain);
+	background-repeat: no-repeat;
+	width: $fontSize * 3;
+	height: $fontSize * 3;
+}
+
+.logo-building {
+	background-image: image-url("logo/building.png");
+	@include background-size(contain);
+	background-repeat: no-repeat;
+	width: $fontSize * 3;
+	height: $fontSize * 3;
+}
+
+.logo-room {
+	background-image: image-url("logo/room.png");
+	@include background-size(contain);
+	background-repeat: no-repeat;
+	width: $fontSize * 3;
+	height: $fontSize * 3;
+}

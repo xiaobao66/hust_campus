@@ -10,7 +10,7 @@ define(function(require, exports, module) {
             roomEmpty: "寝室输入不能为空",
             roomNaN: "寝室输入只能是数字",
             loadingFail: "服务器君失联了,请检查一下您的网络",
-            inputErr: "服务器君失联了,请检查一下您的输入是否合理"
+            inputErr: "输入错误,请检查一下您的输入"
         },
         formData = {};
 
@@ -74,14 +74,16 @@ define(function(require, exports, module) {
                 if (data.code !== 200) {
                     util.showErr(mes.inputErr);
                 } else {
-                    var average = util.averageElec(util.totalElec(data.data.recent), 7);
-                    $("#aver-number").text(average);
-                    $("#surplus-number").text(data.data.remain);
-                    util.surplusElec($("#surplus-elec"), data.data.remain, 360);
-                    var elecChart = echarts.init(document.getElementById('elec-trend'));
-                    util.sevenElec(elecChart, data.data.recent);
-                    $(".show-elec").removeClass('backTo');
-                    $(".loading").hide();
+                    data = JSON.stringify(data);
+                    window.location.href = "show.html?data=" + encodeURIComponent(data);
+                    // var average = util.averageElec(util.totalElec(data.data.recent), 7);
+                    // $("#aver-number").text(average);
+                    // $("#surplus-number").text(data.data.remain);
+                    // util.surplusElec($("#surplus-elec"), data.data.remain, 360);
+                    // var elecChart = echarts.init(document.getElementById('elec-trend'));
+                    // util.sevenElec(elecChart, data.data.recent);
+                    // $(".show-elec").removeClass('backTo');
+                    // $(".loading").hide();
                 }
             }
         });
@@ -91,21 +93,7 @@ define(function(require, exports, module) {
         var area, build, room,
             areaOption = $("#area"),
             buildOption = $("input[name='build']"),
-            roomOption = $("input[name='room']"),
-            //     documentHeight = $(document).height(),
-            //     windowHeight = $(window).height(),
-            trendOffset = $("#trend-title").offset().top;
-        // mainHeight = (documentHeight > windowHeight) ? documentHeight : windowHeight,
-        trendHeight = $(window).height() - trendOffset - 40;
-
-        // if (trendHeight < 380) {
-        //     mainHeight = trendOffset + 50 + 380;
-        //     $("#main").css("height", mainHeight - 80 + "px");
-        //     $("#elec-trend").height(380);
-        // } else {
-        //     $("#main").css("height", mainHeight - 80 + "px");
-        $("#elec-trend").height(trendHeight);
-        // }
+            roomOption = $("input[name='room']");
 
         document.getElementById('area').addEventListener('touchstart', function() {
             if ($(this).hasClass("error-input")) {
@@ -157,20 +145,6 @@ define(function(require, exports, module) {
             if (util.totalTest(areaOption.text(), buildOption.val(), roomOption.val(), inputObj)) {
                 setForm();
             }
-        });
-
-        document.getElementById('elec-trend').addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        });
-
-        document.getElementById('change-dom').addEventListener('touchstart', function(e) {
-            areaOption.text(mes.areaOrigin);
-            areaOption.removeClass('correct-input');
-            areaOption.addClass('origin-input');
-            buildOption.val("");
-            roomOption.val("");
-            $(".show-elec").addClass('backTo');
         });
 
         //测试电量显示结果
