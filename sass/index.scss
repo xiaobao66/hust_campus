@@ -1,0 +1,318 @@
+@import 'normalize';
+@import 'compass/css3';
+@import 'elec-inquire';
+$fontFamily: sans-serif;
+$fontSize: 10px;
+// @include font-face('huawenxihei',font-files('huawenxihei.ttf'));
+html {
+    font-family: $fontFamily;
+    background-color: #f4f4f4;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    & > div {
+    	width: 100%;
+    	height: 100%;
+    	position: relative;
+    	overflow: hidden;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input {
+    outline: 0;
+    box-shadow: 0 0 0;
+}
+
+header {
+    position: relative;
+    background-color: #1fe0a7;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    span {
+        font-size: 17px;
+    }
+    a {
+        position: absolute;
+        display: block;
+        font-size: $fontSize * 1.5;
+        &:first-child {
+            background-image: image-url("back-logo.png");
+            background-size: 11px 11.5px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            text-indent: $fontSize * 1.5;
+            left: $fontSize;
+            top: 0;
+        }
+        &:last-child {
+            right: $fontSize;
+            top: 0;
+        }
+    }
+}
+
+// #change-dom {
+// 	display: none;
+// }
+
+#main {
+    position: relative;
+    width: 100%;
+}
+
+.set-dom {
+    position: relative;
+    margin-top: $fontSize * 4;
+    width: 100%;
+    & > i {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.dom-form {
+    margin: 0 auto;
+    margin-top: $fontSize * 4;
+}
+
+.dom-form-item {
+    position: relative;
+    margin-bottom: $fontSize * 1.5;
+    text-align: center;
+    font-size: 0;
+    & > i {
+        display: inline-block;
+        margin-right: $fontSize * 2.25;
+        vertical-align: middle;
+    }
+    & > input,
+    & > div {
+        display: inline-block;
+        text-align: center;
+        width: $fontSize * 21;
+        height: $fontSize * 3.5;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        vertical-align: middle;
+        font-size: $fontSize * 1.5;
+        background-color: #fff;
+        @include box-sizing(border-box);
+    }
+    & > input {
+        &::-webkit-input-placeholder {
+            color: #ccc;
+        }
+        &:-webkit-input-placeholder {
+            color: #ccc;
+        }
+    }
+    & > div {
+        line-height: $fontSize * 3.5;
+    }
+    & > ul {
+        display: none;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        margin: 0;
+        margin-left: -$fontSize * 7.95;
+        text-align: center;
+        width: $fontSize * 21;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        vertical-align: middle;
+        font-size: $fontSize * 1.5;
+        background-color: #fff;
+        padding: 0;
+        list-style: none;
+        z-index: 2;
+        li {
+            height: $fontSize * 3.5;
+            line-height: $fontSize * 3.5;
+            background-color: #fff;
+        }
+    }
+    & > a {
+        display: inline-block;
+        text-align: center;
+        width: $fontSize * 7.7;
+        height: $fontSize * 4;
+        line-height: $fontSize * 4;
+        color: #fff;
+        background-color: #1fe0a7;
+        border-radius: 5px;
+        font-size: $fontSize * 1.6;
+        margin-top: $fontSize * 4;
+    }
+}
+
+.loading {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 2;
+    div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include translate(-50%,
+        -50%);
+        text-align: center;
+        i {
+            display: inline-block;
+            width: $fontSize * 1.75;
+            height: $fontSize * 1.75;
+            border: 5px solid #333;
+            border-radius: 50%;
+            border-left-color: #ccc;
+            @include animation(loading .5s infinite linear);
+        }
+        p {
+            font-size: $fontSize * 1.5;
+        }
+    }
+}
+
+.loading-info {
+	display: none;
+
+	span {
+		display: inline-block;
+		background-image: image-url("cross.png");
+		background-repeat: no-repeat;
+		width: $fontSize * 1.75;
+		height: $fontSize * 1.75;
+		background-size: $fontSize * 1.75 $fontSize * 1.75;
+	}
+}
+
+.show-elec {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    //left: 100%;
+    z-index: 3;
+    background-color: #fff;
+    text-align: center;
+    @include transition(all .5s ease-in);
+
+    & > p {
+    	margin-bottom: $fontSize * 2.5;
+    	font-size: $fontSize * 1.4;
+
+    	&:nth-of-type(2) {
+    		text-align: left;
+    		margin-left: $fontSize;
+    		margin-bottom: 0;
+    	}
+    }
+
+    .average-elec {
+    	border-top: 1px solid #bebebe;
+    	border-bottom: 1px solid #bebebe;
+    	font-size: $fontSize * 1.4;
+
+    	span {
+    		display: inline-block;
+    		font-size: $fontSize * 2.25;
+    		color: #ff9600;
+    		margin-top: $fontSize * 0.4;
+    	}
+    }
+}
+
+.backTo {
+	@include translateX(100%);
+}
+
+#surplus-elec {
+	width: $fontSize * 10.5;
+	height: $fontSize * 10.5;
+	margin: $fontSize * 2.5 auto;
+	position: relative;
+	border: $fontSize * 0.9 solid #d6d6d6;
+	border-radius: 50%;
+	text-align: center;
+
+	canvas {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include translate(-50%,-50%);
+	}
+
+	p {
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include translate(-50%,-50%);
+	}
+}
+
+#surplus-number {
+	font-size: $fontSize * 4;
+	font-weight: bold;
+	color: #000;
+
+	&::after {
+		content: "kw-h";
+		display: block;
+		font-size: $fontSize * 1.5;
+		font-weight: normal;
+		color: #d6d6d6;
+	}
+}
+
+#elec-trend {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+}
+
+.dom-form-item {
+	.origin-input {
+		color: #ccc;
+	}
+
+	.correct-input {
+		color: #000;
+	}
+
+    .error-input {
+        border-color: #eb5053;
+        background-color: #ffe9ec;
+        color: #eb5053;
+        &::-webkit-input-placeholder {
+            color: #eb5053;
+        }
+        &:-webkit-input-placeholder {
+            color: #eb5053;
+        }
+    }
+}
+
+@include keyframes(loading) {
+	100% {
+		@include rotate(360deg);
+	}
+}
