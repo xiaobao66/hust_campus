@@ -84,7 +84,7 @@ define(function(require, exports, module) {
     };
 
     //绘制7天用电趋势
-    Util.prototype.sevenElec = function(charts, data) {
+    Util.prototype.sevenElec = function(charts, data, chartsHeight) {
         var date, sdate, year, month, day, xAxisD = [],
             elecData = [];
         //分割日期及获取电量
@@ -102,7 +102,7 @@ define(function(require, exports, module) {
             grid: {
                 borderWidth: 0,
                 x: 0,
-                y: 20,
+                y: 100,
                 x2: 0,
                 y2: 0
             },
@@ -121,14 +121,19 @@ define(function(require, exports, module) {
                     fontSize: 12,
                     padding: 15
                 },
+                axisPointer: {
+                    type: "none"
+                },
                 position: function(p) {
                     var x;
-                    if (p[0] > $(window).width() - 1 || p[0] < 20) {
+                    if (p[0] > $(window).width() - 10) {
                         x = p[0];
+                    } else if (p[0] < 20) {
+                        x = 0;
                     } else {
                         x = p[0] - 50;
                     }
-                    return [x, p[1] - 80];
+                    return [x, 25];
                 },
                 formatter: function(params, ticket, callback) {
                     // var mes = params[0].name + "<br>" + "<span style='font-size: 15px'>" + params[0].data + "</span>" + "<br>kw-h";

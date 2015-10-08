@@ -1,9 +1,7 @@
 @import 'normalize';
 @import 'compass/css3';
-
 $fontFamily: sans-serif;
 $fontSize: 10px;
-
 html {
     font-family: $fontFamily;
     background-color: #f4f4f4;
@@ -93,90 +91,93 @@ header {
 }
 
 .show-elec {
-    position: absolute;
-    display: none;
+    position: relative;
     width: 100%;
     height: 100%;
     top: 0;
     //left: 100%;
-    z-index: 3;
+    // z-index: 3;
     background-color: #fff;
     text-align: center;
-    @include transition(all .5s ease-in);
-
+    // @include transition(all .5s ease-in);
     & > p {
-    	margin-bottom: $fontSize * 2.5;
-    	font-size: $fontSize * 1.4;
-
-    	&:nth-of-type(2) {
-    		text-align: left;
-    		margin-left: $fontSize;
-    		margin-bottom: 0;
-    	}
+        margin-bottom: $fontSize * 2.5;
+        font-size: $fontSize * 1.4;
+        &:nth-of-type(2) {
+            text-align: left;
+            margin-left: $fontSize;
+            margin-bottom: 0;
+        }
     }
-
     .average-elec {
-    	border-top: 1px solid #bebebe;
-    	border-bottom: 1px solid #bebebe;
-    	font-size: $fontSize * 1.4;
-
-    	span {
-    		display: inline-block;
-    		font-size: $fontSize * 2.25;
-    		color: #ff9600;
-    		margin-top: $fontSize * 0.4;
-    	}
+        border-top: 1px solid #bebebe;
+        border-bottom: 1px solid #bebebe;
+        font-size: $fontSize * 1.4;
+        span {
+            display: inline-block;
+            font-size: $fontSize * 2.25;
+            color: #ff9600;
+            margin-top: $fontSize * 0.4;
+        }
+    }
+    & > a {
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        font-size: $fontSize * 1.6;
+        left: 50%;
+        @include translate(-50%,
+        -50%);
     }
 }
 
-.backTo {
-	@include translateX(100%);
+.loading-data {
+    visibility: hidden;
 }
 
 #surplus-elec {
-	width: $fontSize * 10.5;
-	height: $fontSize * 10.5;
-	margin: $fontSize * 2.5 auto;
-	position: relative;
-	border: $fontSize * 0.9 solid #d6d6d6;
-	border-radius: 50%;
-	text-align: center;
-
-	canvas {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include translate(-50%,-50%);
-	}
-
-	p {
-		margin: 0;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include translate(-50%,-50%);
-	}
+    width: $fontSize * 10.5;
+    height: $fontSize * 10.5;
+    margin: $fontSize * 2.5 auto;
+    position: relative;
+    border: $fontSize * 0.9 solid #d6d6d6;
+    border-radius: 50%;
+    text-align: center;
+    canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%,
+        -50%);
+    }
+    p {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%,
+        -50%);
+    }
 }
 
 #surplus-number {
-	font-size: $fontSize * 4;
-	font-weight: bold;
-	color: #000;
-
-	&::after {
-		content: "kw-h";
-		display: block;
-		font-size: $fontSize * 1.5;
-		font-weight: normal;
-		color: #d6d6d6;
-	}
+    font-size: $fontSize * 4;
+    font-weight: bold;
+    color: #000;
+    &::after {
+        content: "kw-h";
+        display: block;
+        font-size: $fontSize * 1.5;
+        font-weight: normal;
+        color: #d6d6d6;
+    }
 }
 
 #elec-trend {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
 }
 
 @include keyframes(loading) {
