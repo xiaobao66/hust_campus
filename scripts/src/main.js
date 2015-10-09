@@ -95,13 +95,18 @@ define(function(require, exports, module) {
             buildOption = $("input[name='build']"),
             roomOption = $("input[name='room']");
 
+        $(".loading").height($(window).height());
+
         document.getElementById('area').addEventListener('touchstart', function() {
             if ($(this).hasClass("error-input")) {
                 $(this).removeClass("error-input");
                 $(this).text(mes.areaOrigin);
             }
             $(this).addClass('origin-input');
-            var domArea = $("#dom-area");
+            var domArea = $("#dom-area"),
+                areaItem = $("#dom-area li");
+
+            areaItem.removeClass("user-choose");
             if (domArea.is(":hidden")) {
                 domArea.show();
             } else {
@@ -110,6 +115,10 @@ define(function(require, exports, module) {
         });
 
         document.getElementById('dom-area').addEventListener('touchstart', function(e) {
+            $(e.target).addClass('user-choose');
+        });
+
+        document.getElementById('dom-area').addEventListener('touchend', function(e) {
             e.preventDefault();
             var value = $(e.target).attr("value");
             areaOption.text(value);

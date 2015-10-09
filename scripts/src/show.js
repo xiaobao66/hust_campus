@@ -9,10 +9,51 @@ define(function(require, exports, module) {
 
     data = decodeURIComponent(data);
     data = JSON.parse(data);
+    // var data = {
+    //     code: 200,
+    //     msg: "success",
+    //     data: {
+    //         build: "西十三舍",
+    //         last_update: "2015-10-6 7:30:27",
+    //         remain: "99.6",
+    //         room: "212",
+    //         recent: {
+    //             20150930: {
+    //                 updated_at: "2015-9-30 7:31:24",
+    //                 dianfei: "108.1"
+    //             },
+    //             20151001: {
+    //                 updated_at: "2015-10-1 7:30:47",
+    //                 dianfei: "106.1"
+    //             },
+    //             20151002: {
+    //                 updated_at: "2015-10-2 7:30:27",
+    //                 dianfei: "103.7"
+    //             },
+    //             20151003: {
+    //                 updated_at: "2015-10-3 7:30:10",
+    //                 dianfei: "102.0"
+    //             },
+    //             20151004: {
+    //                 updated_at: "2015-10-4 7:22:56",
+    //                 dianfei: "100.1"
+    //             },
+    //             20151005: {
+    //                 updated_at: "2015-10-5 7:29:00",
+    //                 dianfei: "99.8"
+    //             },
+    //             20151006: {
+    //                 updated_at: "2015-10-6 7:30:27",
+    //                 dianfei: "99.6"
+    //             }
+    //         }
+    //     }
+    // };
 
     $(function() {
         var average = util.averageElec(util.totalElec(data.data.recent), 7),
             trendHeight = $(window).height() - $("#trend-title").offset().top - 25,
+            windowHeight = $(window).height(),
             remain = data.data.remain;
 
         document.getElementById("change-dom").addEventListener("touchstart", function(e) {
@@ -21,7 +62,12 @@ define(function(require, exports, module) {
             window.location.href = "index.html";
         });
 
-        $("#elec-trend").height(trendHeight);
+        if (trendHeight > 190) {
+            $("#elec-trend").height(trendHeight);
+        } else {
+            $("#elec-trend").height(190);
+            $("body").css("height", windowHeight + 190 - trendHeight + "px");
+        }
         $("#aver-number").text(average);
         $("#surplus-number").text(remain);
         if (remain > 100) {
@@ -36,5 +82,9 @@ define(function(require, exports, module) {
         util.sevenElec(elecChart, data.data.recent, trendHeight);
         $(".show-elec").removeClass('loading-data');
         $(".loading").hide();
+
+        // document.getElementById("elec-trend").addEventListener("touchmove", function(e) {
+        //     e.preventDefault();
+        // });
     });
 });

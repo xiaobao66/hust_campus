@@ -15,6 +15,8 @@ define(function(require, exports, module) {
 
     //计算日均用电量
     Util.prototype.averageElec = function(total, day) {
+        total = Math.abs(total);
+
         return (total / day).toFixed(1);
     };
 
@@ -133,7 +135,7 @@ define(function(require, exports, module) {
                     } else {
                         x = p[0] - 50;
                     }
-                    return [x, 25];
+                    return [x, 20];
                 },
                 formatter: function(params, ticket, callback) {
                     // var mes = params[0].name + "<br>" + "<span style='font-size: 15px'>" + params[0].data + "</span>" + "<br>kw-h";
@@ -169,8 +171,8 @@ define(function(require, exports, module) {
                         }
                     },
                     emphasis: {
-                        borderColor: "#47deec",
-                        borderWidth: 5000
+                        borderColor: "#fff",
+                        borderWidth: 2
                     }
                 },
                 symbolSize: 5,
