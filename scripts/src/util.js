@@ -34,7 +34,7 @@ define(function(require, exports, module) {
             if (j !== 1) {
                 gap = lastElec - nowElec;
 
-                if (Math.abs(gap) < 80) {
+                if (gap > 0) {
                     total += gap;
                     day++;
                 }
