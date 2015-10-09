@@ -137,7 +137,7 @@ define(function(require, exports, module) {
                 position: function(p) {
                     var x;
                     if (p[0] > $(window).width() - 10) {
-                        x = p[0];
+                        x = p[0] + 30;
                     } else if (p[0] < 20) {
                         x = 0;
                     } else {

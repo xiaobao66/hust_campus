@@ -132,6 +132,10 @@ define(function(require, exports, module) {
                 if ($(this).hasClass("error-input")) {
                     $(this).removeClass("error-input");
                 }
+                $(this).attr("placeholder", "");
+            });
+
+            document.getElementById('build').addEventListener('blur',function() {
                 $(this).attr("placeholder", mes.buildOrigin);
             });
 
@@ -139,11 +143,17 @@ define(function(require, exports, module) {
                 if ($(this).hasClass("error-input")) {
                     $(this).removeClass("error-input");
                 }
+                $(this).attr("placeholder", "");
+            });
+
+            document.getElementById('room').addEventListener('blur',function() {
                 $(this).attr("placeholder", mes.roomOrigin);
             });
 
             document.getElementById('submit-button').addEventListener('touchstart', function(e) {
                 e.preventDefault();
+                document.getElementById('build').blur();
+                document.getElementById('room').blur();
                 var inputObj = {
                     areaOption: areaOption,
                     buildOption: buildOption,
@@ -204,6 +214,8 @@ define(function(require, exports, module) {
 
             document.getElementById('submit-button').addEventListener('click', function(e) {
                 e.preventDefault();
+                document.getElementById('build').blur();
+                document.getElementById('room').blur();
                 var inputObj = {
                     areaOption: areaOption,
                     buildOption: buildOption,
