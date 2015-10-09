@@ -51,16 +51,12 @@ define(function(require, exports, module) {
     // };
 
     $(function() {
-        var average = util.averageElec(util.totalElec(data.data.recent), 7),
+        var average = util.averageElec(util.totalElec(data.data.recent)),
             trendHeight = $(window).height() - $("#trend-title").offset().top - 25,
             windowHeight = $(window).height(),
             remain = data.data.remain;
 
-        document.getElementById("change-dom").addEventListener("touchstart", function(e) {
-            e.preventDefault();
-
-            window.location.href = "index.html";
-        });
+        document.documentElement.style.webkitTouchCallout='none';
 
         if (trendHeight > 190) {
             $("#elec-trend").height(trendHeight);
@@ -83,8 +79,22 @@ define(function(require, exports, module) {
         $(".show-elec").removeClass('loading-data');
         $(".loading").hide();
 
-        // document.getElementById("elec-trend").addEventListener("touchmove", function(e) {
-        //     e.preventDefault();
-        // });
+        if (util.isMobile(navigator.userAgent)) {
+            document.getElementById("change-dom").addEventListener("touchstart", function(e) {
+                e.preventDefault();
+
+                window.location.href = "index.html";
+            });
+
+            // document.getElementById("elec-trend").addEventListener("touchstart", function(e) {
+            //     e.preventDefault();
+            // });
+        } else {
+            document.getElementById("change-dom").addEventListener("click", function(e) {
+                e.preventDefault();
+
+                window.location.href = "index.html";
+            });
+        }
     });
 });

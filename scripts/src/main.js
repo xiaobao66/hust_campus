@@ -97,64 +97,126 @@ define(function(require, exports, module) {
 
         $(".loading").height($(window).height());
 
-        document.getElementById('area').addEventListener('touchstart', function() {
-            if ($(this).hasClass("error-input")) {
-                $(this).removeClass("error-input");
-                $(this).text(mes.areaOrigin);
-            }
-            $(this).addClass('origin-input');
-            var domArea = $("#dom-area"),
-                areaItem = $("#dom-area li");
+        if (util.isMobile(navigator.userAgent)) {
+            document.getElementById('area').addEventListener('touchstart', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                    $(this).text(mes.areaOrigin);
+                }
+                $(this).addClass('origin-input');
+                var domArea = $("#dom-area"),
+                    areaItem = $("#dom-area li");
 
-            areaItem.removeClass("user-choose");
-            if (domArea.is(":hidden")) {
-                domArea.show();
-            } else {
-                domArea.hide();
-            }
-        });
+                areaItem.removeClass("user-choose");
+                if (domArea.is(":hidden")) {
+                    domArea.show();
+                } else {
+                    domArea.hide();
+                }
+            });
 
-        document.getElementById('dom-area').addEventListener('touchstart', function(e) {
-            $(e.target).addClass('user-choose');
-        });
+            document.getElementById('dom-area').addEventListener('touchstart', function(e) {
+                $(e.target).addClass('user-choose');
+            });
 
-        document.getElementById('dom-area').addEventListener('touchend', function(e) {
-            e.preventDefault();
-            var value = $(e.target).attr("value");
-            areaOption.text(value);
-            areaOption.removeClass('origin-input');
-            areaOption.addClass('correct-input');
-            $(this).hide();
-        });
+            document.getElementById('dom-area').addEventListener('touchend', function(e) {
+                e.preventDefault();
+                var value = $(e.target).attr("value");
+                areaOption.text(value);
+                areaOption.removeClass('origin-input');
+                areaOption.addClass('correct-input');
+                $(this).hide();
+            });
 
-        document.getElementById('build').addEventListener('touchstart', function() {
-            if ($(this).hasClass("error-input")) {
-                $(this).removeClass("error-input");
-            }
-            $(this).attr("placeholder", mes.buildOrigin);
-        });
+            document.getElementById('build').addEventListener('touchstart', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                }
+                $(this).attr("placeholder", mes.buildOrigin);
+            });
 
-        document.getElementById('room').addEventListener('touchstart', function() {
-            if ($(this).hasClass("error-input")) {
-                $(this).removeClass("error-input");
-            }
-            $(this).attr("placeholder", mes.roomOrigin);
-        });
+            document.getElementById('room').addEventListener('touchstart', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                }
+                $(this).attr("placeholder", mes.roomOrigin);
+            });
 
-        document.getElementById('submit-button').addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            var inputObj = {
-                areaOption: areaOption,
-                buildOption: buildOption,
-                roomOption: roomOption,
-                mes: mes,
-                formData: formData
-            };
+            document.getElementById('submit-button').addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                var inputObj = {
+                    areaOption: areaOption,
+                    buildOption: buildOption,
+                    roomOption: roomOption,
+                    mes: mes,
+                    formData: formData
+                };
 
-            if (util.totalTest(areaOption.text(), buildOption.val(), roomOption.val(), inputObj)) {
-                setForm();
-            }
-        });
+                if (util.totalTest(areaOption.text(), buildOption.val(), roomOption.val(), inputObj)) {
+                    setForm();
+                }
+            });
+        } else {
+            document.getElementById('area').addEventListener('click', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                    $(this).text(mes.areaOrigin);
+                }
+                $(this).addClass('origin-input');
+                var domArea = $("#dom-area"),
+                    areaItem = $("#dom-area li");
+
+                areaItem.removeClass("user-choose");
+                if (domArea.is(":hidden")) {
+                    domArea.show();
+                } else {
+                    domArea.hide();
+                }
+            });
+
+            document.getElementById('dom-area').addEventListener('mouseover', function(e) {
+                $("#dom-area li").removeClass("user-choose");
+                $(e.target).addClass('user-choose');
+            });
+
+            document.getElementById('dom-area').addEventListener('click', function(e) {
+                e.preventDefault();
+                var value = $(e.target).attr("value");
+                areaOption.text(value);
+                areaOption.removeClass('origin-input');
+                areaOption.addClass('correct-input');
+                $(this).hide();
+            });
+
+            document.getElementById('build').addEventListener('click', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                }
+                $(this).attr("placeholder", mes.buildOrigin);
+            });
+
+            document.getElementById('room').addEventListener('click', function() {
+                if ($(this).hasClass("error-input")) {
+                    $(this).removeClass("error-input");
+                }
+                $(this).attr("placeholder", mes.roomOrigin);
+            });
+
+            document.getElementById('submit-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                var inputObj = {
+                    areaOption: areaOption,
+                    buildOption: buildOption,
+                    roomOption: roomOption,
+                    mes: mes,
+                    formData: formData
+                };
+
+                if (util.totalTest(areaOption.text(), buildOption.val(), roomOption.val(), inputObj)) {
+                    setForm();
+                }
+            });
+        }
 
         //测试电量显示结果
         // var average = util.averageElec(util.totalElec(test.data.recent), 7);

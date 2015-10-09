@@ -7,6 +7,9 @@ html {
     background-color: #f4f4f4;
     width: 100%;
     height: 100%;
+}
+
+* {
     -webkit-user-select:none;
     -webkit-touch-callout:none;
 }
@@ -125,12 +128,14 @@ header {
     }
     & > a {
         position: absolute;
+        display: block;
         bottom: 0;
         color: #fff;
         font-size: $fontSize * 1.6;
         left: 50%;
         @include translate(-50%,
         -50%);
+        background-color: rgba(0,0,0,.5);
     }
 }
 

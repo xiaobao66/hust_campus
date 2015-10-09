@@ -14,31 +14,39 @@ define(function(require, exports, module) {
     };
 
     //计算日均用电量
-    Util.prototype.averageElec = function(total, day) {
-        total = Math.abs(total);
+    Util.prototype.averageElec = function(data) {
+        total = Math.abs(data.total);
 
-        return (total / day).toFixed(1);
+        return (total / data.day).toFixed(1);
     };
 
     //获取总的用电量
     Util.prototype.totalElec = function(recent) {
         var total = 0,
-            maxElec = 0,
-            minElec = 0,
+            lastElec = 0,
+            nowElec = 0,
+            gap = 0,
+            day = 0,
             j = 1;
 
         for (var i in recent) {
-            if (j === 1) {
-                maxElec = parseFloat(recent[i].dianfei);
-            } else if (j === 7) {
-                minElec = parseFloat(recent[i].dianfei);
+            nowElec = parseFloat(recent[i].dianfei);
+            if (j !== 1) {
+                gap = lastElec - nowElec;
+
+                if (Math.abs(gap) < 80) {
+                    total += gap;
+                    day++;
+                }
             }
+            lastElec = nowElec;
             j++;
         }
 
-        total = maxElec - minElec;
-
-        return total;
+        return {
+            total: total,
+            day: day
+        };
     };
 
     //绘制剩余电量百分比
@@ -230,6 +238,15 @@ define(function(require, exports, module) {
         }
 
         return flag;
+    };
+
+    //检测访问时是pc端还是移动端
+    Util.prototype.isMobile = function(userAgent) {
+        if (/AppleWebKit.*Mobile/i.test(userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(userAgent))) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     module.exports = util;

@@ -108,6 +108,8 @@ header {
     }
     & > div {
         line-height: $fontSize * 3.5;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
     & > ul {
         display: none;
@@ -130,6 +132,8 @@ header {
             height: $fontSize * 3.5;
             line-height: $fontSize * 3.5;
             background-color: #fff;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
         }
     }
     & > a {
