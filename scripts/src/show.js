@@ -56,7 +56,7 @@ define(function(require, exports, module) {
             windowHeight = $(window).height(),
             remain = data.data.remain;
 
-        document.documentElement.style.webkitTouchCallout='none';
+        document.documentElement.style.webkitTouchCallout = 'none';
 
         if (trendHeight > 190) {
             $("#elec-trend").height(trendHeight);
@@ -89,6 +89,10 @@ define(function(require, exports, module) {
             // document.getElementById("elec-trend").addEventListener("touchstart", function(e) {
             //     e.preventDefault();
             // });
+            document.getElementById('download').addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=net.bingyan.hustpass";
+            });
         } else {
             document.getElementById("change-dom").addEventListener("click", function(e) {
                 e.preventDefault();
