@@ -15,9 +15,14 @@ define(function(require, exports, module) {
 
     //计算日均用电量
     Util.prototype.averageElec = function(data) {
-        total = Math.abs(data.total);
+        var total = Math.abs(data.total),
+            average = 0;
 
-        return (total / data.day).toFixed(1);
+        if (total !== 0) {
+            average = (total / data.day).toFixed(1);
+        }
+
+        return average;
     };
 
     //获取总的用电量
