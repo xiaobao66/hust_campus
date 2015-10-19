@@ -1,2 +1,4 @@
 .sass-cache
-config.rb
+scripts/build.js
+scripts/r.js
+scripts/dist/build.txt
