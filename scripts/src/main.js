@@ -75,7 +75,7 @@ define(function(require, exports, module) {
                     util.showErr(mes.inputErr);
                 } else {
                     data = JSON.stringify(data);
-                    window.location.href = "show.html?data=" + encodeURIComponent(data);
+                    window.location.href = "elec-show.html?data=" + encodeURIComponent(data);
                     // var average = util.averageElec(util.totalElec(data.data.recent), 7);
                     // $("#aver-number").text(average);
                     // $("#surplus-number").text(data.data.remain);

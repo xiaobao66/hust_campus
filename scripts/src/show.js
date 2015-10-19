@@ -83,7 +83,7 @@ define(function(require, exports, module) {
             document.getElementById("change-dom").addEventListener("touchstart", function(e) {
                 e.preventDefault();
 
-                window.location.href = "index.html";
+                window.location.href = "elec-index.html";
             });
 
             // document.getElementById("elec-trend").addEventListener("touchstart", function(e) {
@@ -97,7 +97,7 @@ define(function(require, exports, module) {
             document.getElementById("change-dom").addEventListener("click", function(e) {
                 e.preventDefault();
 
-                window.location.href = "index.html";
+                window.location.href = "elec-index.html";
             });
         }
     });

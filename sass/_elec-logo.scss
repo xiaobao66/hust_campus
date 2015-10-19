@@ -1,0 +1,19 @@
+@import "retina-sprites";
+
+$sprites: sprite-map("logo/*.png");
+
+.logo-campus {
+	@include retina-sprite(campus);
+}
+
+.logo-area {
+	@include retina-sprite(area);
+}
+
+.logo-building {
+	@include retina-sprite(building);
+}
+
+.logo-room {
+	@include retina-sprite(room);
+}
