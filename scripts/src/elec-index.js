@@ -1,6 +1,21 @@
-define(function(require, exports, module) {
-    var util = require('./util'),
-        mes = {
+requirejs.config({
+    baseUrl: "scripts",
+    paths: {
+        'zepto': 'lib/zepto.min',
+        'echarts': 'lib/echarts-all'
+    },
+    shim: {
+        'zepto': {
+            exports: 'Zepto'
+        },
+        'echarts': {
+            exports: 'echarts'
+        }
+    }
+});
+
+requirejs(['zepto', 'src/elec-util'], function($, Util) {
+    var mes = {
             areaOrigin: "请选择区域,如:东区",
             areaEmpty: "区域选择不能为空",
             buildOrigin: "请输入楼栋号,如:13",
@@ -12,49 +27,8 @@ define(function(require, exports, module) {
             loadingFail: "服务器君失联了,请检查一下您的网络",
             inputErr: "输入错误,请检查一下您的输入"
         },
-        formData = {};
-
-    // var test = {
-    //     code: 200,
-    //     msg: "success",
-    //     data: {
-    //         build: "西十三舍",
-    //         last_update: "2015-10-6 7:30:27",
-    //         remain: "99.6",
-    //         room: "212",
-    //         recent: {
-    //             20150930: {
-    //                 updated_at: "2015-9-30 7:31:24",
-    //                 dianfei: "108.1"
-    //             },
-    //             20151001: {
-    //                 updated_at: "2015-10-1 7:30:47",
-    //                 dianfei: "106.1"
-    //             },
-    //             20151002: {
-    //                 updated_at: "2015-10-2 7:30:27",
-    //                 dianfei: "103.7"
-    //             },
-    //             20151003: {
-    //                 updated_at: "2015-10-3 7:30:10",
-    //                 dianfei: "102.0"
-    //             },
-    //             20151004: {
-    //                 updated_at: "2015-10-4 7:22:56",
-    //                 dianfei: "100.1"
-    //             },
-    //             20151005: {
-    //                 updated_at: "2015-10-5 7:29:00",
-    //                 dianfei: "99.8"
-    //             },
-    //             20151006: {
-    //                 updated_at: "2015-10-6 7:30:27",
-    //                 dianfei: "99.6"
-    //             }
-    //         }
-    //     }
-    // };
-
+        formData = {},
+        util = Util.util;
     //发送表单
     function setForm() {
         var loading = $(".loading");
@@ -108,7 +82,7 @@ define(function(require, exports, module) {
                     areaItem = $("#dom-area li");
 
                 areaItem.removeClass("user-choose");
-                if (domArea.is(":hidden")) {
+                if (domArea.css('display') === "none") {
                     domArea.show();
                 } else {
                     domArea.hide();
@@ -135,7 +109,7 @@ define(function(require, exports, module) {
                 $(this).attr("placeholder", "");
             });
 
-            document.getElementById('build').addEventListener('blur',function() {
+            document.getElementById('build').addEventListener('blur', function() {
                 $(this).attr("placeholder", mes.buildOrigin);
             });
 
@@ -146,7 +120,7 @@ define(function(require, exports, module) {
                 $(this).attr("placeholder", "");
             });
 
-            document.getElementById('room').addEventListener('blur',function() {
+            document.getElementById('room').addEventListener('blur', function() {
                 $(this).attr("placeholder", mes.roomOrigin);
             });
 
@@ -177,7 +151,7 @@ define(function(require, exports, module) {
                     areaItem = $("#dom-area li");
 
                 areaItem.removeClass("user-choose");
-                if (domArea.is(":hidden")) {
+                if (domArea.css('display') === "none") {
                     domArea.show();
                 } else {
                     domArea.hide();
@@ -229,13 +203,5 @@ define(function(require, exports, module) {
                 }
             });
         }
-
-        //测试电量显示结果
-        // var average = util.averageElec(util.totalElec(test.data.recent), 7);
-        // $("#aver-number").text(average);
-        // $("#surplus-number").text(test.data.remain);
-        // util.surplusElec($("#surplus-elec"), test.data.remain, 360);
-        // var elecChart = echarts.init(document.getElementById('elec-trend'));
-        // util.sevenElec(elecChart, test.data.recent);
     });
 });

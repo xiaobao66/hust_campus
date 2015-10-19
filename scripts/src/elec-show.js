@@ -1,5 +1,21 @@
-define(function(require, exports, module) {
-    var util = require('./util'),
+requirejs.config({
+    baseUrl: "scripts",
+    paths: {
+        'zepto': 'lib/zepto.min',
+        'echarts': 'lib/echarts-all'
+    },
+    shim: {
+        'zepto': {
+            exports: 'Zepto'
+        },
+        'echarts': {
+            exports: 'echarts'
+        }
+    }
+});
+
+requirejs(['zepto', 'src/elec-util', 'echarts'], function($, Util, echarts) {
+    var util = Util.util,
         data = window.location.search.split("=")[1],
         mes = {
             elecFull: "电费满满哒,空调随便使用哦",
@@ -7,8 +23,8 @@ define(function(require, exports, module) {
             elecEnough: "电量还是够的,用空调不要心慌慌哦"
         };
 
-    data = decodeURIComponent(data);
-    data = JSON.parse(data);
+        data = decodeURIComponent(data);
+        data = JSON.parse(data);
     // var data = {
     //     code: 200,
     //     msg: "success",

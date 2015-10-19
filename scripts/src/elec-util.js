@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define(['zepto', 'echarts'], function($, echarts) {
     var Util = function() {
 
         },
@@ -57,12 +57,12 @@ define(function(require, exports, module) {
     //绘制剩余电量百分比
     Util.prototype.surplusElec = function(parent, remain, total) {
         var canvas = document.createElement('canvas'),
-            x = parent.outerWidth() / 2,
-            y = parent.outerHeight() / 2,
-            radius = parent.outerWidth() / 2 - 4.5;
+            x = parent.width() / 2,
+            y = parent.height() / 2,
+            radius = parent.width() / 2 - 4.5;
 
-        canvas.width = parent.outerWidth();
-        canvas.height = parent.outerHeight();
+        canvas.width = parent.width();
+        canvas.height = parent.height();
         var ctx = canvas.getContext("2d");
         eAngle = (remain / total).toFixed(1) * Math.PI * 2 + 1.5 * Math.PI;
         ctx.strokeStyle = "#1fe0a7";
@@ -71,6 +71,7 @@ define(function(require, exports, module) {
         ctx.arc(x, y, radius, 1.5 * Math.PI, eAngle, false);
         ctx.stroke();
         parent.prepend(canvas);
+        console.log(parent.width(),parent.height());
     };
 
     //日期横坐标转换
@@ -254,5 +255,7 @@ define(function(require, exports, module) {
         }
     };
 
-    module.exports = util;
+    return {
+        util: util
+    };
 });
