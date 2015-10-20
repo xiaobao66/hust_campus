@@ -26,7 +26,10 @@
         border-radius: 5px;
         display: block;
         width: 100%;
-        text-align: center;
+        text-align: left;
+        padding-left: $fontSize;
+        font-size: $fontSize * 1.5;
+        @include box-sizing(border-box);
     }
     & > span {
         display: block;

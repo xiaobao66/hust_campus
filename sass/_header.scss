@@ -1,17 +1,16 @@
 @import "compass/css3";
-
-$fontFamily: sans-serif;
+$fontFamily: 'STXihei','Microsoft YaHei',sans-serif;
 $fontSize: 10px;
-
 html {
     font-family: $fontFamily;
     background-color: #f4f4f4;
     width: 100%;
-    -webkit-user-select:none;
+    -webkit-user-select: none;
     -webkit-touch-callout: none;
 }
 
 body {
+    font-family: $fontFamily;
     position: relative;
     width: 100%;
     @include box-sizing(border-box);
@@ -20,7 +19,7 @@ body {
 a {
     text-decoration: none;
     color: inherit;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 input {
@@ -29,10 +28,10 @@ input {
 }
 
 header {
-	background-color: #1fe0a7;
-	color: #fff;
-	height: $fontSize * 4;
-	line-height: $fontSize * 4;
-	text-align: center;
+    background-color: #1fe0a7;
+    color: #fff;
+    height: $fontSize * 4;
+    line-height: $fontSize * 4;
+    text-align: center;
     font-size: 17px;
 }
