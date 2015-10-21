@@ -43,7 +43,7 @@ header {
     margin-top: $fontSize * 0.6;
     visibility: hidden;
 
-    & > div {
+    #show-table {
     	overflow-y: scroll;
     	margin-top: $fontSize;
     }

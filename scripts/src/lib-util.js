@@ -20,7 +20,7 @@ define(['zepto'], function($) {
         for (var i in search) {
             string += i + '=' + search[i] + '&';
         }
-        string = string.slice(0,-1);
+        string = string.slice(0, -1);
         return url + '?' + encodeURIComponent(string);
     }
 
@@ -66,19 +66,18 @@ define(['zepto'], function($) {
     }
 
     // <tr>
-    // 	<th>馆藏地址</th>
-    // 	<th>索书号</th>
-    // 	<th>馆藏状态</th>
+    //  <th>馆藏地址</th>
+    //  <th>索书号</th>
+    //  <th>馆藏状态</th>
     // </tr>
     // <tr>
-    // 	<td>中文图书阅览室（C区2楼，3楼，5楼）</td>
-    // 	<td>TP312C 848/3</td>
-    // 	<td>馆内阅览</td>
+    //  <td>中文图书阅览室（C区2楼，3楼，5楼）</td>
+    //  <td>TP312C 848/3</td>
+    //  <td>馆内阅览</td>
     // </tr>
 
     //加载图书详情
-    function loadDetail(data, nodes) {
-        nodes.img.attr('src', data.picture);
+    function loadDetail(data, nodes, callback) {
         nodes.name.text(data.title);
         nodes.author.text(data.author);
         nodes.isbn.text(data.isbn);
@@ -102,11 +101,15 @@ define(['zepto'], function($) {
             }
             nodes.parent.append(fragment);
         } else {
-        	var div = document.createElement('div');
-        	$(div).addClass('detail-info');
-        	$(div).text(data.description);
-        	nodes.main.append(div);
+            var div = document.createElement('div');
+            $(div).addClass('detail-info');
+            $(div).text(data.description);
+            nodes.main.append(div);
         }
+        nodes.img.onload = function() {
+            callback();
+        };
+        nodes.img.src = data.picture;
     }
 
     //显示错误信息

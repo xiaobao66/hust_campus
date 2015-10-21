@@ -61,10 +61,14 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 util.showErr(mes.loadingFail);
             },
             success: function(data) {
-                util.loadDetail(data.data, nodes);
-                $(".loading").hide();
-                $('.load-origin').hide();
-                $('.lib-main').css('visibility','visible');
+                util.loadDetail(data.data, nodes, function() {
+                    var top = $("#show-table").offset().top,
+                        height = $(window).height();
+                    $('#show-table').height(height - top);
+                    $(".loading").hide();
+                    $('.load-origin').hide();
+                    $('.lib-main').css('visibility', 'visible');
+                });
             }
         });
     }
@@ -73,26 +77,23 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             info = search.split('&'),
             bookId = info[0].split('=')[1],
             keywords = info[1].split('=')[1],
-            top = $('.lib-main > div').offset().top,
-            height = $(window).height(),
             nodes = {
-                img: $('.detail-img'),
+                img: document.getElementById('pic-img'),
                 name: $('.book-name'),
                 author: $('.book-author'),
                 isbn: $('.book-isbn'),
                 publisher: $('.book-publisher'),
                 parent: $('.book-record > tbody'),
-                main: $('.lib-main')
+                main: $('#show-table')
             };
         // $('.thumb-window').height();
-        $('header > a').on('touchstart',function(e) {
+        $('header > a').on('touchstart', function(e) {
             e.preventDefault();
             var search = {
                 keywords: keywords
             };
             window.location.href = util.encodeURL('library-result.html', search);
         });
-        $('.lib-main > div').height(height - top - 20);
         initDetail(bookId, nodes);
         // util.loadDetail(data.data, nodes);
         // $('.lib-main').show();
