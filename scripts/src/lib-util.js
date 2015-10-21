@@ -23,6 +23,47 @@ define(['zepto'], function($) {
         return url + '?' + encodeURIComponent(string);
     }
 
+    // <div class="book-item">
+    //     <div class="thumb-window">
+    //         <img class="detail-img" src="http://202.114.9.17/bibimage/zycover.php?isbn=9787121041143">
+    //     </div>
+    //     <div>
+    //         <p class="book-title">C/C++高效率教程asdfasdfdsfsdfadasdsafas</p>
+    //         <p class="book-author">李春庚编著</p>
+    //     </div>
+    // </div>
+
+    //加载搜索结果
+    function loadResult(data, parent) {
+        var fragment = document.createDocumentFragment(),
+            pic, title, author, id, item, img;
+        for (var i = 0; i < data.length; i++) {
+            item = $(document.createElement('div'));
+            item.addClass('book-item');
+            $(fragment).append(item);
+            pic = $(document.createElement('div'));
+            pic.addClass('thumb-window');
+            item.append(pic);
+            img = $(document.createElement('img'));
+            img.addClass('detail-img');
+            img.attr('src', data[i].picture);
+            pic.append(img);
+            pic = $(document.createElement('div'));
+            title = $(document.createElement('p'));
+            title.addClass('book-title');
+            title.text(data[i].title);
+            pic.append(title);
+            item.append(pic);
+            author = $(document.createElement('p'));
+            author.addClass('book-author');
+            author.text(data[i].author);
+            pic.append(author);
+            item.append(pic);
+            item.attr('book-id', data[i].id);
+        }
+        parent.append(fragment);
+    }
+
     //显示错误信息
     function showErr(err) {
         $('.load-origin').hide();
@@ -37,6 +78,7 @@ define(['zepto'], function($) {
     return {
         loadHotBook: hotBook,
         encodeURL: encodeURL,
-        showErr: showErr
+        showErr: showErr,
+        loadResult: loadResult
     };
 });

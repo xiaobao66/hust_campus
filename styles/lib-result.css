@@ -93,6 +93,58 @@ header {
   font-size: 17px;
 }
 
+.loading {
+  position: absolute;
+  z-index: 1111;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.loading p {
+  color: #9a9a9a;
+  font-size: 15px;
+}
+
+.load-origin {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  background-color: #fff;
+  padding: 10px;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.load-origin img {
+  width: 40px;
+  height: auto;
+}
+
+.load-info {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  background-color: #fff;
+  padding: 10px;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.load-info span {
+  display: inline-block;
+  background-image: url('../images/cross.png?1444222358');
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+
 @font-face {
   font-family: 'icomoon';
   src: url('../fonts/icomoon.eot?1445355960');
@@ -140,39 +192,46 @@ header > a::before {
   position: relative;
   margin-top: 10px;
   font-size: 15px;
-  color: #1fe0a7;
 }
 .search > input {
-  position: relative;
-  height: 38px;
+  height: 33px;
   border: 1px solid #c9c9c9;
   border-radius: 5px;
   display: block;
   width: 100%;
   text-align: left;
-  padding-left: 35px;
+  padding-left: 30px;
   font-size: 15px;
-  outline: 0;
-  background-color: #fff;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.search::before {
+.search > span {
+  display: block;
   position: absolute;
+  color: #1fe0a7;
+  vertical-align: middle;
+  pointer-events: none;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+.search > span::before {
   font-family: 'icomoon';
   content: "\e800";
-  display: block;
-  top: 50%;
-  left: 10px;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 2;
-  pointer-events: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
 }
-.search::after {
+.search > i {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  width: 30px;
+  height: 100%;
+}
+.search > i::before {
   position: absolute;
   top: 50%;
   right: 5px;
@@ -180,10 +239,29 @@ header > a::before {
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  content: "\e801";
   font-family: 'icomoon';
   content: "\e801";
   display: block;
   color: #333;
+}
+
+.hint-origin {
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.hint-focus {
+  top: 50%;
+  left: 5px;
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 .book-result {
@@ -228,8 +306,16 @@ header > a::before {
   text-align: center;
   padding: 5px 0;
   background-color: #fff;
+  overflow: hidden;
 }
 .thumb-window > img {
   width: 100%;
   height: auto;
+}
+
+.book-info {
+  text-align: center;
+  color: #5a5a5a;
+  font-size: 16px;
+  line-height: 1.2;
 }

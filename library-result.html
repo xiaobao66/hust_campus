@@ -9,53 +9,33 @@
 </head>
 
 <body>
+    <section class="loading">
+        <div class="load-origin">
+            <img src="images/loading.gif">
+            <p>正在加载中</p>
+        </div>
+        <div class="load-info">
+            <span></span>
+            <p></p>
+        </div>
+    </section>
     <header>
         <a href="javascript:;">返回</a>
         <span>图书馆</span>
     </header>
     <section class="lib-main">
+        <!-- <nav class="search">
+            <input type="text" id="user-input">
+        </nav> -->
         <nav class="search">
             <input type="text" id="user-input">
+            <span class="hint-focus"></span>
+            <i></i>
         </nav>
-        <section class="book-result">
-            <div class="book-item">
-                <div class="thumb-window">
-                    <img class="detail-img" src="http://202.114.9.17/bibimage/zycover.php?isbn=9787121041143">
-                </div>
-                <div>
-                    <p class="book-title">C/C++高效率教程asdfasdfdsfsdfadasdsafas</p>
-                    <p class="book-author">李春庚编著</p>
-                </div>
-            </div>
-            <div class="book-item">
-                <div class="thumb-window">
-                    <img class="detail-img" src="http://202.114.9.17/bibimage/zycover.php?isbn=9787121041143">
-                </div>
-                <div>
-                    <p class="book-title">C/C++高效率教程asdfasdfdsfsdfadasdsafas</p>
-                    <p class="book-author">李春庚编著</p>
-                </div>
-            </div>
-            <div class="book-item">
-               <div class="thumb-window">
-                    <img class="detail-img" src="http://202.114.9.17/bibimage/zycover.php?isbn=9787121041143">
-                </div>
-                <div>
-                    <p class="book-title">C/C++高效率教程asdfasdfdsfsdfadasdsafas</p>
-                    <p class="book-author">李春庚编著</p>
-                </div>
-            </div>
-            <div class="book-item">
-               <div class="thumb-window">
-                    <img class="detail-img" src="http://202.114.9.17/bibimage/zycover.php?isbn=9787121041143">
-                </div>
-                <div>
-                    <p class="book-title">C/C++高效率教程asdfasdfdsfsdfadasdsafas</p>
-                    <p class="book-author">李春庚编著</p>
-                </div>
-            </div>
-        </section>
+        <section class="book-result"></section>
     </section>
+    <script type="text/javascript" src="scripts/lib/requirejs.js"></script>
+    <script type="text/javascript" src="scripts/src/lib-result.js"></script>
 </body>
 
 </html>
