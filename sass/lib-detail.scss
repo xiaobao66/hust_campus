@@ -11,22 +11,27 @@
 }
 
 header {
-	position: relative;
-	& > a {
-		display: block;
-		position: absolute;
-		left: $fontSize * 0.5;
-		top: 0;
-		height: 100%;
-		font-size: $fontSize * 1.5;
-		vertical-align: middle;
-		&::before {
-			font-family: 'icomoon';
-			content: '\e802';
-			display: inline-block;
-			vertical-align: middle;
-		}
-	}
+    position: relative;
+    & > a {
+        display: block;
+        position: absolute;
+        left: $fontSize * 0.5;
+        top: 0;
+        height: 100%;
+        font-size: $fontSize * 1.5;
+        line-height: $fontSize * 4;
+        padding-left: $fontSize * 1.5;
+        &::before {
+            font-family: 'icomoon';
+            content: '\e802';
+            display: block;
+            font-size: $fontSize * 1.5;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            @include translateY(-50%);
+        }
+    }
 }
 
 .lib-main {
@@ -46,24 +51,25 @@ header {
 
 .thumb-window {
 	display: inline-block;
-	width: $fontSize * 9.75;
-	height: $fontSize * 9.75;
+	width: 98px / 349px * 100%;
+	height: 98px / 349px * 100%;
 	// @include box-sizing(border-box);
 	padding: $fontSize * 0.8 0;
 	text-align: center;
 	border: 1px solid #9e9e9e;
+	vertical-align: middle;
 
 	& > img {
-		height: 100%;
-		width: auto;
+		width: 100%;
+		height: auto;
 	}
 }
 
 .book-intro {
-	position: absolute;
-	width: $fontSize * 20;
-	top: $fontSize * 3;
-	right: $fontSize;
+	margin-left: 22px / 349px * 100%;
+	display: inline-block;
+	width: 200px / 349px * 100%;
+	vertical-align: middle;
 
 	p {
 		line-height: 1.2;
@@ -99,11 +105,11 @@ header {
 		background-color: #e5e5e5;
 		color: #9b9b9b;
 		th {
-			padding: $fontSize * 0.8 0;
+			padding: $fontSize 0;
 		}
 	}
 
-	tr:nth-of-type(3n) {
+	tr:nth-of-type(2n) {
 		background-color: #fff;
 	}
 }

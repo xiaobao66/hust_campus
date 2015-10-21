@@ -5,6 +5,7 @@ html {
     font-family: $fontFamily;
     background-color: #f4f4f4;
     width: 100%;
+    height: 100%;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
 }
@@ -13,6 +14,7 @@ body {
     font-family: $fontFamily;
     position: relative;
     width: 100%;
+    height: 100%;
     @include box-sizing(border-box);
 }
 

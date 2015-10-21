@@ -1,6 +1,7 @@
 @import 'compass/reset';
 @import 'compass/css3';
 @import 'header';
+@import 'load';
 @font-face {
     font-family: 'icomoon';
     src: font-url('icomoon.eot');
@@ -27,7 +28,7 @@
         display: block;
         width: 100%;
         text-align: left;
-        padding-left: $fontSize;
+        padding-left: $fontSize * 3;
         font-size: $fontSize * 1.5;
         @include box-sizing(border-box);
     }
@@ -36,6 +37,8 @@
         position: absolute;
         color: #1fe0a7;
 		vertical-align: middle;
+        pointer-events: none;
+        @include transition(all .5s linear);
         &::before {
             font-family: 'icomoon';
             content: "\e800";
@@ -44,12 +47,39 @@
             margin: 5px;
         }
     }
+
+    & > i {
+        position: absolute;
+        right: 5px;
+        top: 0;
+        width: 30px;
+        height: 100%;
+        display: none;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            @include translateY(-50%);
+            content: "\e801";
+            font-family: 'icomoon';
+            content: "\e801";
+            display: block;
+            color: #333;
+        }
+    }
 }
 
 .hint-origin {
     top: 50%;
     left: 50%;
     @include translate(-50%,-50%);
+}
+
+.hint-focus {
+    top: 50%;
+    left: 5px;
+    @include translate(0,-50%);
 }
 
 .hot-book {
