@@ -43,7 +43,8 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             url: '/lib',
             type: 'GET',
             data: {
-                keywords: keywords
+                keywords: keywords,
+                count: 20
             },
             beforeSend: function() {
                 $('.book-result').empty();
@@ -59,7 +60,8 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                     $('.book-item').on('touchstart', function(e) {
                         e.preventDefault();
                         var info = {
-                            bookId: $(e.currentTarget).attr('book-id')
+                            bookId: $(e.currentTarget).attr('book-id'),
+                            keywords: keywords
                         };
                         window.location.href = util.encodeURL('library-detail.html', info);
                     });

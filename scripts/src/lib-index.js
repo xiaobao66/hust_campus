@@ -54,7 +54,8 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 $('#hot-result span').on('touchstart', function(e) {
                     e.preventDefault();
                     var info = {
-                        bookId: $(e.target).attr('book-id')
+                        bookId: $(e.target).attr('book-id'),
+                        keywords: $(e.target).text()
                     };
                     window.location.href = util.encodeURL('library-detail.html', info);
                 });

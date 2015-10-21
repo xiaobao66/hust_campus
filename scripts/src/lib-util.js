@@ -18,8 +18,9 @@ define(['zepto'], function($) {
     function encodeURL(url, search) {
         var string = '';
         for (var i in search) {
-            string += i + '=' + search[i];
+            string += i + '=' + search[i] + '&';
         }
+        string = string.slice(0,-1);
         return url + '?' + encodeURIComponent(string);
     }
 
@@ -64,6 +65,50 @@ define(['zepto'], function($) {
         parent.append(fragment);
     }
 
+    // <tr>
+    // 	<th>馆藏地址</th>
+    // 	<th>索书号</th>
+    // 	<th>馆藏状态</th>
+    // </tr>
+    // <tr>
+    // 	<td>中文图书阅览室（C区2楼，3楼，5楼）</td>
+    // 	<td>TP312C 848/3</td>
+    // 	<td>馆内阅览</td>
+    // </tr>
+
+    //加载图书详情
+    function loadDetail(data, nodes) {
+        nodes.img.attr('src', data.picture);
+        nodes.name.text(data.title);
+        nodes.author.text(data.author);
+        nodes.isbn.text(data.isbn);
+        nodes.publisher.text(data.publisher);
+        if (data.collections.length) {
+            var fragment = document.createDocumentFragment(),
+                collections = data.collections,
+                tr, td;
+            for (var i = 0; i < collections.length; i++) {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                $(td).text(collections[i].place);
+                $(tr).append(td);
+                td = document.createElement('td');
+                $(td).text(collections[i].index);
+                $(tr).append(td);
+                td = document.createElement('td');
+                $(td).text(collections[i].status);
+                $(tr).append(td);
+                $(fragment).append(tr);
+            }
+            nodes.parent.append(fragment);
+        } else {
+        	var div = document.createElement('div');
+        	$(div).addClass('detail-info');
+        	$(div).text(data.description);
+        	nodes.main.append(div);
+        }
+    }
+
     //显示错误信息
     function showErr(err) {
         $('.load-origin').hide();
@@ -79,6 +124,7 @@ define(['zepto'], function($) {
         loadHotBook: hotBook,
         encodeURL: encodeURL,
         showErr: showErr,
-        loadResult: loadResult
+        loadResult: loadResult,
+        loadDetail: loadDetail
     };
 });

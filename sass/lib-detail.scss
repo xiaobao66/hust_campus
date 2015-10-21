@@ -2,6 +2,7 @@
 @import 'compass/reset';
 @import 'compass/css3';
 @import 'header';
+@import 'load';
 @font-face {
     font-family: 'icomoon';
     src: font-url('icomoon.eot');
@@ -39,6 +40,7 @@ header {
     position: relative;
     width: 100%;
     padding: 0 $fontSize * 1.3;
+    display: none;
 }
 
 .book-detail {
@@ -112,4 +114,11 @@ header {
 	tr:nth-of-type(2n) {
 		background-color: #fff;
 	}
+}
+
+.detail-info {
+	margin-top: $fontSize * 1.5;
+	font-size: $fontSize * 1.5;
+	padding: 0 $fontSize * 2.5;
+	text-align: center;
 }
