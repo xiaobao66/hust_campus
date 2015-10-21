@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: "scripts",
     paths: {
-        'zepto': 'lib/zepto.min'
+        'zepto': 'lib/zepto'
     },
     shim: {
         'zepto': {
@@ -57,7 +57,7 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             success: function(data) {
                 if (data.data.length) {
                     util.loadResult(data.data, $('.book-result'));
-                    $('.book-item').on('touchstart', function(e) {
+                    $('.book-item').tap(function(e) {
                         e.preventDefault();
                         var info = {
                             bookId: $(e.currentTarget).attr('book-id'),

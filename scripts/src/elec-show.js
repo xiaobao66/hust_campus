@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: "scripts",
     paths: {
-        'zepto': 'lib/zepto.min',
+        'zepto': 'lib/zepto',
         'echarts': 'lib/echarts-all'
     },
     shim: {
