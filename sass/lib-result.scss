@@ -9,6 +9,25 @@
     font-style: normal;
 }
 
+header {
+    position: relative;
+    & > a {
+        display: block;
+        position: absolute;
+        left: $fontSize * 0.5;
+        top: 0;
+        height: 100%;
+        font-size: $fontSize * 1.5;
+        vertical-align: middle;
+        &::before {
+            font-family: 'icomoon';
+            content: '\e802';
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
 .lib-main {
     @include box-sizing(border-box);
     position: relative;
@@ -69,16 +88,7 @@
 	margin-bottom: $fontSize * 1.5;
 	font-size: 0;
 
-	& > img {
-		display: inline-block;
-		width: $fontSize * 7.5;
-		height: $fontSize * 7.5;
-		border: 2px solid #c9c9c9;
-		margin-right: $fontSize * 2;
-		vertical-align: middle;
-	}
-
-	& > div {
+	div:nth-of-type(2) {
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -95,4 +105,21 @@
 			margin: $fontSize * 1.2 0;
 		}
 	}
+}
+
+.thumb-window {
+    @include box-sizing(border-box);
+    display: inline-block;
+    width: $fontSize * 9;
+    height: $fontSize * 9;
+    border: 2px solid #c9c9c9;
+    margin-right: $fontSize * 2;
+    text-align: center;
+    padding: $fontSize * 0.5 0;
+    background-color: #fff;
+
+    & > img {
+        height: 100%;
+        width: auto;
+    }
 }
