@@ -64,7 +64,7 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 util.loadDetail(data.data, nodes);
                 $(".loading").hide();
                 $('.load-origin').hide();
-                $('.lib-main').show();
+                $('.lib-main').css('visibility','visible');
             }
         });
     }
@@ -73,6 +73,8 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             info = search.split('&'),
             bookId = info[0].split('=')[1],
             keywords = info[1].split('=')[1],
+            top = $('.lib-main > div').offset().top,
+            height = $(window).height(),
             nodes = {
                 img: $('.detail-img'),
                 name: $('.book-name'),
@@ -90,6 +92,7 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             };
             window.location.href = util.encodeURL('library-result.html', search);
         });
+        $('.lib-main > div').height(height - top - 20);
         initDetail(bookId, nodes);
         // util.loadDetail(data.data, nodes);
         // $('.lib-main').show();
