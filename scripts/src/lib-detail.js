@@ -82,6 +82,7 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 parent: $('.book-record > tbody'),
                 main: $('.lib-main')
             };
+        // $('.thumb-window').height();
         $('header > a').on('touchstart',function(e) {
             e.preventDefault();
             var search = {

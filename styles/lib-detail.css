@@ -201,6 +201,7 @@ header > a::before {
   display: inline-block;
   width: 28.08023%;
   height: 28.08023%;
+  min-height: 80px;
   padding: 8px 0;
   text-align: center;
   border: 1px solid #9e9e9e;

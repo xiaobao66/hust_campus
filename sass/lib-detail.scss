@@ -55,6 +55,7 @@ header {
 	display: inline-block;
 	width: 98px / 349px * 100%;
 	height: 98px / 349px * 100%;
+	min-height: $fontSize * 8;
 	// @include box-sizing(border-box);
 	padding: $fontSize * 0.8 0;
 	text-align: center;
