@@ -23,79 +23,31 @@
         <section class="no-choice"></section>
         <section class="search-room">
         	<nav>
-        		<a href="javascript:;"></a>
+        		<a href="javascript:;" id="back-search"></a>
         		<input type="text" id="user-input" placeholder="请输入教室号">
-        		<span>搜索</span>
+        		<span id="get-search">搜索</span>
         	</nav>
         	<div>
-        		<section class="room-result">
-        			<div class="result-item">
-        				<h3>201</h3>
-        				<div class="info-item">
-        					<span>空闲时间:</span>
-        					<div>
-        						<span>1-2节</span>
-        						<span>3-4节</span>
-        						<span>5-6节</span>
-        						<span>7-8节</span>
-        						<span>9-12节</span>
-        					</div>
-        				</div>
-        				<div class="info-item">
-        					<span>占用时间:</span>
-        					<div>
-        						<p>
-        							<span>1-2节</span>
-        							<span>计算机学院</span>
-        						</p>
-        						<p>
-        							<span>9-12节</span>
-        							<span>计算机学院</span>
-        						</p>
-        					</div>
-        				</div>
-        			</div>
-        		</section>
+        		<section class="room-result"></section>
         	</div>
         </section>
         <header>
             <div class="change-build">
-                <span>西十二</span>
-                <ul>
-                    <li class="current-build">西十二</li>
-                    <li>西五</li>
-                    <li>东五</li>
-                    <li>东九</li>
-                    <li>东十二</li>
+                <span build-id="X12">西十二</span>
+                <ul id="build-options">
+                    <li class="current-build" build-id="X12">西十二</li>
+                    <li build-id="X5">西五</li>
+                    <li build-id="D5">东五</li>
+                    <li build-id="D9">东九</li>
+                    <li build-id="D12">东十二</li>
                 </ul>
             </div>
-            <a href="javascript:;"></a>
+            <a href="javascript:;" id="enter-search"></a>
         </header>
-        <section class="room-main">
-            <section class="build-item">
-                <div>1楼</div>
-                <div>
-                    <span>N101</span>
-                    <span>N101</span>
-                </div>
-                <div></div>
-            </section>
-            <section class="build-item">
-                <div>2楼</div>
-                <div>
-                    <span>N101</span>
-                    <span>N101</span>
-                    <span>N101</span>
-                    <span>N101</span>
-                    <span>N101</span>
-                    <span>N101</span>
-                </div>
-                <div></div>
-            </section>
-        </section>
+        <section class="room-main"></section>
         <section class="choose-time">
             <div>
-                <span time="0" class="current-time">全选</span>
+                <span time="0">全选</span>
                 <span time="1">1-2节</span>
                 <span time="2">3-4节</span>
             </div>
@@ -106,6 +58,8 @@
             </div>
         </section>
     </section>
+    <script type="text/javascript" src="scripts/lib/requirejs.js"></script>
+    <script type="text/javascript" src="scripts/src/room-index.js"></script>
 </body>
 
 </html>

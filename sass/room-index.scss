@@ -16,6 +16,10 @@
     height: 100%;
 }
 
+body {
+	-webkit-overflow-scrolling: touch;
+}
+
 header {
     position: relative;
     a {
@@ -66,6 +70,7 @@ header {
 		list-style-type: none;
 		width: 100%;
 		display: none;
+		z-index: 2;
 
 		li {
 			position: relative;
@@ -79,6 +84,10 @@ header {
 				position: absolute;
 				right: $fontSize * 0.8;
 			}
+		}
+
+		.current-tap {
+			background-color: rgba(31,224,167,0.5);
 		}
 	}
 }
@@ -137,7 +146,10 @@ header {
 }
 
 .room-main {
-	position: relative;
+	position: absolute;
+	width: 100%;
+	top: $fontSize * 4;
+	bottom: $fontSize * 8.6;
 	overflow-y: scroll;
 }
 
@@ -175,10 +187,10 @@ header {
 		// @include display-flex;
 		// @include flex-wrap(wrap);
 		// @include justify-content(flex-start);
-		padding: $fontSize * 2 $fontSize * 2.5 $fontSize * 2 $fontSize * 6.5;
+		padding: $fontSize * 2 $fontSize * 2.5 0 $fontSize * 6.5;
 		color: #3f3f3f;
 		font-size: 0;
-		margin-bottom: -$fontSize * 1.5;
+		// margin-bottom: -$fontSize * 1.5;
 		text-align: left;
 
 		span {
@@ -202,6 +214,19 @@ header {
 	}
 }
 
+.loading {
+	display: block;
+}
+
+.load-origin {
+	top: 40%;
+	display: block;
+}
+
+.load-info {
+	top: 40%;
+}
+
 .no-choice {
 	position: absolute;
 	width: 100%;
@@ -220,7 +245,8 @@ header {
 	width: 100%;
 	height: 100%;
 	z-index: 2;
-	visibility: hidden;
+	@include transition(all .5s);
+	@include translateY(-100%);
 
 	& > nav {
 		position: relative;
@@ -238,6 +264,7 @@ header {
 			top: 0;
 			left: 0;
 			height: 100%;
+			width: 30px;
 			&::before{
 				content: '\e802';
 				font-family: 'icomoon';
@@ -289,6 +316,8 @@ header {
 			@include translateY(-50%);
 			right: $fontSize * 1.5;
 			font-size: $fontSize * 1.5;
+			height: 100%;
+			line-height: $fontSize * 4;
 		}
 
 		&::after {
@@ -300,12 +329,20 @@ header {
 	}
 
 	& > div {
+		position: absolute;
+		width: 100%;
+		top: $fontSize * 4;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.6);
 		overflow-y: scroll;
 	}
 }
 
+.show-search {
+	@include translateY(0);
+}
+
 .room-result {
-	background-color: rgba(0,0,0,0.6);
 	padding: $fontSize * 2 0 0 $fontSize * 1.8;
 }
 
