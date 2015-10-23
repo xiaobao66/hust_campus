@@ -343,11 +343,12 @@ header {
 }
 
 .room-result {
-	padding: $fontSize * 2 0 0 $fontSize * 1.8;
+	padding: $fontSize * 2 $fontSize * 1.8 0;
 }
 
 .result-item {
 	color: #fff;
+	padding-bottom: $fontSize;
 	h3 {
 		font-size: $fontSize * 4;
 		margin-bottom: $fontSize;
@@ -355,38 +356,35 @@ header {
 	}
 }
 
-.info-item {
-	font-size: 0;
-	padding-bottom: $fontSize * 2;
+.table {
+	display: table;
+}
 
-	& > span,
-	& > div {
-		display: inline-block;
-		font-size: $fontSize * 1.5;
-		vertical-align: top;
+.table-row {
+	display: table-row;
+}
 
-		span {
-			margin-right: $fontSize;
-			margin-bottom: $fontSize;
-		}
+.table-cell {
+	display: table-cell;
+	padding-bottom: $fontSize;
+}
 
-		p {
-			@include display-flex;
-			@include justify-content(space-between);
-		}
-	}
+.info-title {
+	width: 25%;
+	min-width: $fontSize * 7.5;
+	padding-right: $fontSize;
+}
 
-	& > span {
-		width: 25%;
-		min-width: $fontSize * 7.5;
-	}
+.class-info {
+	width: $fontSize * 5;
+	padding-right: $fontSize;
+}
 
-	&:nth-of-type(1) > div {
-		width: 70%;
+.info-show {
+	width: 70%;
 
-		span {
-			margin-bottom: 0;
-			line-height: 1.2;
-		}
+	span {
+		padding-right: $fontSize * 0.5;
+		line-height: 1.5;
 	}
 }

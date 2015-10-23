@@ -86,7 +86,6 @@ define(['zepto'], function($) {
                 showErr(mes.loadingFail);
             },
             success: function(data) {
-                console.log(data);
                 if (data.code !== 200) {
                     showErr(mes.findNull);
                 } else {
@@ -102,107 +101,96 @@ define(['zepto'], function($) {
 
     //显示查询到的教室
     function loadSearch(data) {
-        var fragment,item, h3, info, span, div, p, span2;
+        var fragment, item, h3, table, row, cell, span, row2, cell2;
         for (var i in data) {
             fragment = document.createDocumentFragment();
             item = $(document.createElement('div'));
             item.addClass('result-item');
             h3 = $(document.createElement('h3'));
-            h3.text(i);
-            item.append(h3);
-            info = $(document.createElement('div'));
-            info.addClass('info-item');
-            span = $(document.createElement('span'));
-            span.text('空闲时间:');
-            info.append(span);
-            div = $(document.createElement('div'));
+            h3.text(i).appendTo(item);
+            table = $(document.createElement('div'));
+            table.addClass('table');
+            row = $(document.createElement('div'));
+            row.addClass('table-row');
+            cell = $(document.createElement('div'));
+            cell.addClass('table-cell info-title').text('空闲时间:').appendTo(row);
+            cell = $(document.createElement('div'));
+            cell.addClass('table-cell info-show');
             for (var j in data[i]) {
                 span = $(document.createElement('span'));
                 if (data[i][j] === "") {
                     switch (j) {
                         case 'A':
-                            span.text('1-2节');
-                            div.append(span);
+                            span.text('1-2节').appendTo(cell);
                             break;
                         case 'B':
-                            span.text('3-4节');
-                            div.append(span);
+                            span.text('3-4节').appendTo(cell);
                             break;
                         case 'C':
-                            span.text('5-6节');
-                            div.append(span);
+                            span.text('5-6节').appendTo(cell);
                             break;
                         case 'D':
-                            span.text('7-8节');
-                            div.append(span);
+                            span.text('7-8节').appendTo(cell);
                             break;
                         case 'E':
-                            span.text('9-12节');
-                            div.append(span);
+                            span.text('9-12节').appendTo(cell);
                             break;
                     }
                 }
             }
-            info.append(div);
-            item.append(info);
-            info = $(document.createElement('div'));
-            info.addClass('info-item');
-            span = $(document.createElement('span'));
-            span.text('占用时间:');
-            info.append(span);
-            div = $(document.createElement('div'));
+            cell.appendTo(row);
+            row.appendTo(table);
+            row = $(document.createElement('div'));
+            row.addClass('table-row');
+            cell = $(document.createElement('div'));
+            cell.addClass('table-cell info-title').text('占用时间:').appendTo(row);
+            cell = $(document.createElement('div'));
+            cell.addClass('table-cell info-show');
             for (var z in data[i]) {
-                p = $(document.createElement('p'));
-                span = $(document.createElement('span'));
                 if (data[i][z] !== "") {
+                    row2 = $(document.createElement('div'));
+                    row2.addClass('table-row');
+                    cell2 = $(document.createElement('div'));
+                    cell2.addClass('table-cell class-info');
                     switch (z) {
                         case 'A':
-                            span.text('1-2节');
-                            p.append(span);
-                            span = $(document.createElement('span'));
-                            span.text(data[i][z]);
-                            p.append(span);
-                            div.append(p);
+                            cell2.text('1-2节').appendTo(row2);
+                            cell2 = $(document.createElement('div'));
+                            cell2.addClass('table-cell');
+                            cell2.text(data[i][z]).appendTo(row2);
                             break;
                         case 'B':
-                            span.text('3-4节');
-                            p.append(span);
-                            span = $(document.createElement('span'));
-                            span.text(data[i][z]);
-                            p.append(span);
-                            div.append(p);
+                            cell2.text('3-4节').appendTo(row2);
+                            cell2 = $(document.createElement('div'));
+                            cell2.addClass('table-cell');
+                            cell2.text(data[i][z]).appendTo(row2);
                             break;
                         case 'C':
-                            span.text('5-6节');
-                            p.append(span);
-                            span = $(document.createElement('span'));
-                            span.text(data[i][z]);
-                            p.append(span);
-                            div.append(p);
+                            cell2.text('5-6节').appendTo(row2);
+                            cell2 = $(document.createElement('div'));
+                            cell2.addClass('table-cell');
+                            cell2.text(data[i][z]).appendTo(row2);
                             break;
                         case 'D':
-                            span.text('7-8节');
-                            p.append(span);
-                            span = $(document.createElement('span'));
-                            span.text(data[i][z]);
-                            p.append(span);
-                            div.append(p);
+                            cell2.text('7-8节').appendTo(row2);
+                            cell2 = $(document.createElement('div'));
+                            cell2.addClass('table-cell');
+                            cell2.text(data[i][z]).appendTo(row2);
                             break;
                         case 'E':
-                            span.text('9-12节');
-                            p.append(span);
-                            span = $(document.createElement('span'));
-                            span.text(data[i][z]);
-                            p.append(span);
-                            div.append(p);
+                            cell2.text('9-12节').appendTo(row2);
+                            cell2 = $(document.createElement('div'));
+                            cell2.addClass('table-cell');
+                            cell2.text(data[i][z]).appendTo(row2);
                             break;
                     }
+                    row2.appendTo(cell);
                 }
             }
-            info.append(div);
-            item.append(info);
-            $(fragment).append(item);
-            $(".room-result").append(fragment);
+            cell.appendTo(row);
+            row.appendTo(table);
+            table.appendTo(item);
+            $(fragment).append(item).appendTo($('.room-result'));
         }
     }
 
