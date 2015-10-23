@@ -22,7 +22,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             value;
         util.loadData(building, mes, function(data) {
             roomData = data;
-            console.log(roomData);
+            // console.log(roomData);
         });
 
         //显示教学楼选项
@@ -49,7 +49,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             $('.change-build > span').attr('build-id', build);
             util.loadData(build, mes, function(data) {
                 roomData = data;
-                console.log(roomData);
+                // console.log(roomData);
             });
         });
 

@@ -12,15 +12,35 @@ define(['zepto'], function($) {
 
     //获取具体的时间段
     function getPeriod(nodes) {
-        var values = 0;
+        var values = [0, 0, 0, 0];
         for (var i = 0; i < nodes.length; i++) {
             if ($(nodes[i]).hasClass('current-time')) {
-                values += parseInt($(nodes[i]).attr('time'));
+                switch (i) {
+                    case 0:
+                        values[0] += 1;
+                        break;
+                    case 1:
+                        values[1] += 1;
+                        break;
+                    case 2:
+                        values[1] += 2;
+                        break;
+                    case 3:
+                        values[2] += 1;
+                        break;
+                    case 4:
+                        values[2] += 2;
+                        break;
+                    case 5:
+                        values[3] += 1;
+                }
             }
         }
-        if (values === 15) {
+        if (values.toString() === '0,3,3,1') {
             nodes.addClass('current-time');
+            values[0] = 1;
         }
+        // console.log(values);
         return values;
     }
 
@@ -35,7 +55,8 @@ define(['zepto'], function($) {
                 period: 'ALL'
             },
             beforeSend: function() {
-                $('.no-choice').hide();
+                // $('.no-choice').hide();
+                $('.choose-time span').removeClass('current-time');
                 $(".loading").show();
                 $('.load-origin').show();
             },
@@ -53,7 +74,142 @@ define(['zepto'], function($) {
 
     //显示空闲教室
     function showRoom(value, data) {
+        // console.log(data);
+        $(".loading").show();
+        $('.load-origin').show();
+        $('.room-main').empty();
+        var rooms = getNeededRoom(data, value),
+            fragment = document.createDocumentFragment(),
+            item, div, span;
+        for (var i in rooms) {
+            if (rooms[i].length) {
+                item = $(document.createElement('section'));
+                item.addClass('build-item');
+                div = $(document.createElement('div'));
+                div.text(i + '楼').appendTo(item);
+                div = $(document.createElement('div'));
+                for (var j = 0; j < rooms[i].length; j++) {
+                    span = $(document.createElement('span'));
+                    span.text(rooms[i][j]).appendTo(div);
+                }
+                div.appendTo(item);
+                item.appendTo(fragment);
+            }
+        }
+        $('.room-main').append(fragment);
+        if (value.toString() !== '0,0,0,0') {
+            $('.no-choice').hide();
+        } else {
+            $('.no-choice').show();
+        }
+        $(".loading").hide();
+        $('.load-origin').hide();
+    }
 
+    //获取需要显示的教室
+    function getNeededRoom(data, opts) {
+        var rooms = [
+                [],
+                [],
+                [],
+                []
+            ],
+            temp, needed = [],
+            str = /^[a-zA-Z]$/;
+        for (var i = 0; i < opts.length; i++) {
+            if ((temp = getSpecifiedRoom(data, i, opts[i]))) {
+                rooms[i] = temp.split(" ");
+            }
+            if (i === 0 && opts[0] === 1) {
+                break;
+            }
+        }
+        if (rooms[0].length) {
+            needed = rooms[0];
+        } else {
+            for (i = 1; i < rooms.length; i++) {
+                if (rooms[i].length) {
+                    if (!needed.length) {
+                        needed = rooms[i];
+                    } else {
+                        needed = getArraySameElem(needed, rooms[i]);
+                    }
+                }
+            }
+        }
+        //教室分层
+        temp = needed;
+        needed = {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: [],
+            6: []
+        };
+        for (i = 0; i < temp.length; i++) {
+            if (str.test(temp[i][0])) {
+                needed[temp[i][1]].push(temp[i]);
+            } else {
+                needed[temp[i][0]].push(temp[i]);
+            }
+        }
+        return needed;
+    }
+
+    //获取两个数组相同的元素
+    function getArraySameElem(arr1, arr2) {
+        var sameArr = [];
+        for (var i = 0; i < arr1.length; i++) {
+            for (var j = 0; j < arr2.length; j++) {
+                if (arr1[i] === arr2[j]) {
+                    sameArr.push(arr1[i]);
+                    break;
+                }
+            }
+        }
+        return sameArr;
+    }
+
+    //获取指定时间段空闲教室
+    function getSpecifiedRoom(data, flag, opts) {
+        var rooms;
+        switch (flag) {
+            case 0:
+                if (opts === 1) {
+                    rooms = data.WHOLE.whole;
+                }
+                break;
+            case 1:
+                switch (opts) {
+                    case 1:
+                        rooms = data.AM.partA;
+                        break;
+                    case 2:
+                        rooms = data.AM.partB;
+                        break;
+                    case 3:
+                        rooms = data.AM.whole;
+                }
+                break;
+            case 2:
+                switch (opts) {
+                    case 1:
+                        rooms = data.PM.partA;
+                        break;
+                    case 2:
+                        rooms = data.PM.partB;
+                        break;
+                    case 3:
+                        rooms = data.PM.whole;
+                }
+                break;
+            case 3:
+                if (opts === 1) {
+                    rooms = data.NIG.whole;
+                }
+        }
+        return rooms;
     }
 
     //获取当前日期
