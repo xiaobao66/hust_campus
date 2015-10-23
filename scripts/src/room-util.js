@@ -72,6 +72,15 @@ define(['zepto'], function($) {
         });
     }
 
+    // <section class="build-item">
+    //     <div>1楼</div>
+    //     <div>
+    //         <span>N101</span>
+    //         <span>N101</span>
+    //     </div>
+    //     <div></div>
+    // </section>
+
     //显示空闲教室
     function showRoom(value, data) {
         // console.log(data);
@@ -254,6 +263,35 @@ define(['zepto'], function($) {
             }
         });
     }
+
+    // <div class="result-item">
+    //     <h3>201</h3>
+    //     <div class="table">
+    //         <div class="table-row">
+    //             <div class="table-cell info-title">空闲时间:</div>
+    //             <div class="table-cell info-show">
+    //                 <span>1-2节</span>
+    //                 <span>3-4节</span>
+    //                 <span>5-6节</span>
+    //                 <span>7-8节</span>
+    //                 <span>9-12节</span>
+    //             </div>
+    //         </div>
+    //         <div class="table-row">
+    //             <div class="table-cell info-title">占用时间:</div>
+    //             <div class="table-cell info-show">
+    //                 <div class="table-row">
+    //                     <div class="table-cell class-info">1-2节</div>
+    //                     <div class="table-cell">计算机学院</div>
+    //                 </div>
+    //                 <div class="table-row">
+    //                     <div class="table-cell class-info">9-12节</div>
+    //                     <div class="table-cell">计算机学院</div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>
 
     //显示查询到的教室
     function loadSearch(data) {
