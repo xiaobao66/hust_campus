@@ -47,6 +47,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             $(e.currentTarget).hide();
             var build = $(e.target).attr('build-id');
             $('.change-build > span').attr('build-id', build);
+            $('.room-main').empty();
             util.loadData(build, mes, function(data) {
                 roomData = data;
                 // console.log(roomData);
