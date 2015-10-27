@@ -69,8 +69,6 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
             buildOption = $("input[name='build']"),
             roomOption = $("input[name='room']");
 
-        $(".loading").height($(window).height());
-
         if (util.isMobile(navigator.userAgent)) {
             document.getElementById('area').addEventListener('touchstart', function() {
                 if ($(this).hasClass("error-input")) {
@@ -124,6 +122,25 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
 
             document.getElementById('room').addEventListener('blur', function() {
                 $(this).attr("placeholder", mes.roomOrigin);
+            });
+
+            document.getElementById('room').addEventListener('keyup', function(e) {
+                if(e.keyCode === 13) {
+                    e.preventDefault();
+                    document.getElementById('build').blur();
+                    document.getElementById('room').blur();
+                    var inputObj = {
+                        areaOption: areaOption,
+                        buildOption: buildOption,
+                        roomOption: roomOption,
+                        mes: mes,
+                        formData: formData
+                    };
+
+                    if (util.totalTest(areaOption.text(), buildOption.val(), roomOption.val(), inputObj)) {
+                        setForm();
+                    }
+                }
             });
 
             document.getElementById('submit-button').addEventListener('touchstart', function(e) {
