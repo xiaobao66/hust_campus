@@ -97,6 +97,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             e.preventDefault();
             var input = $('#user-input').val(),
                 build = $('.change-build > span').attr('build-id');
+            input = input.toUpperCase();
             util.showSearch(build, input, mes);
         });
     });

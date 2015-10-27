@@ -102,7 +102,8 @@ define(['zepto'], function($) {
                     span.text(rooms[i][j]).appendTo(div);
                 }
                 div.appendTo(item);
-                item.appendTo(fragment);
+                div = document.createElement('div');
+                item.append(div).appendTo(fragment);
             }
         }
         $('.room-main').append(fragment);

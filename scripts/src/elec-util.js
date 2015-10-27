@@ -87,16 +87,14 @@ define(['zepto', 'echarts'], function($, echarts) {
     };
 
     //显示表单发送错误信息
-    Util.prototype.showErr = function(mes) {
-        $(".loading > div").hide();
-        $("#loading-text").text(mes);
-        $(".loading-info").show();
-
+    Util.prototype.showErr = function (err) {
+        $('.load-origin').hide();
+        $('.load-info > p').text(err);
+        $('.load-info').show();
         setTimeout(function() {
-            $(".loading").hide();
-            $(".loading > div").show();
-            $(".loading-info").hide();
-        }, 1500);
+            $('.load-info').hide();
+            $('.loading').hide();
+        }, 2000);
     };
 
     //绘制7天用电趋势

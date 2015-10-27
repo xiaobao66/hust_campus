@@ -1,6 +1,7 @@
 @import 'normalize';
 @import 'compass/css3';
 @import 'elec-logo';
+@import 'load';
 $fontFamily: sans-serif;
 $fontSize: 10px;
 // @include font-face('huawenxihei',font-files('huawenxihei.ttf'));
@@ -25,6 +26,11 @@ a {
 input {
     outline: 0;
     box-shadow: 0 0 0;
+}
+
+.loading {
+    top: 0;
+    left: 0;
 }
 
 header {
@@ -192,55 +198,55 @@ header {
     }
 }
 
-.loading {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, .3);
-    z-index: 2;
-    div {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        background-color: #fff;
-        border-radius: 5px;
-        padding: $fontSize;
-        @include translate(-50%,
-        -50%);
-        text-align: center;
-        i {
-            display: inline-block;
-            width: $fontSize * 1.75;
-            height: $fontSize * 1.75;
-            border: 5px solid #333;
-            border-radius: 50%;
-            border-left-color: #ccc;
-            @include animation(loading .5s infinite linear);
-        }
-        p {
-            font-size: $fontSize * 1.6;
-            margin: 0;
-            margin-top: 5px;
-        }
-    }
-}
+// .loading {
+//     display: none;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     background-color: rgba(0, 0, 0, .3);
+//     z-index: 2;
+//     div {
+//         position: absolute;
+//         left: 50%;
+//         top: 50%;
+//         background-color: #fff;
+//         border-radius: 5px;
+//         padding: $fontSize;
+//         @include translate(-50%,
+//         -50%);
+//         text-align: center;
+//         i {
+//             display: inline-block;
+//             width: $fontSize * 1.75;
+//             height: $fontSize * 1.75;
+//             border: 5px solid #333;
+//             border-radius: 50%;
+//             border-left-color: #ccc;
+//             @include animation(loading .5s infinite linear);
+//         }
+//         p {
+//             font-size: $fontSize * 1.6;
+//             margin: 0;
+//             margin-top: 5px;
+//         }
+//     }
+// }
 
-.loading-info {
-    display: none;
-    span {
-        display: inline-block;
-        background-image: image-url("cross.png");
-        background-repeat: no-repeat;
-        width: $fontSize * 1.75;
-        height: $fontSize * 1.75;
-        background-size: $fontSize * 1.75 $fontSize * 1.75;
-    }
-}
+// .loading-info {
+//     display: none;
+//     span {
+//         display: inline-block;
+//         background-image: image-url("cross.png");
+//         background-repeat: no-repeat;
+//         width: $fontSize * 1.75;
+//         height: $fontSize * 1.75;
+//         background-size: $fontSize * 1.75 $fontSize * 1.75;
+//     }
+// }
 
-@include keyframes(loading) {
-    100% {
-        @include rotate(360deg);
-    }
-}
+// @include keyframes(loading) {
+//     100% {
+//         @include rotate(360deg);
+//     }
+// }

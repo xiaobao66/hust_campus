@@ -32,7 +32,6 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
     //发送表单
     function setForm() {
         var loading = $(".loading");
-        var loadInfo = $("#loading-info");
         $.ajax({
             url: "/dianfei",
             type: "GET",
@@ -40,6 +39,7 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
             contentType: false,
             beforeSend: function() {
                 loading.show();
+                $('.load-origin').show();
             },
             error: function() {
                 util.showErr(mes.loadingFail);
