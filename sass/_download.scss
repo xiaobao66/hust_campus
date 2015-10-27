@@ -1,0 +1,41 @@
+@import 'compass/css3';
+$fontSize: 10px;
+
+.download-app {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: $fontSize * 4.6;
+    background-color: #fff;
+    text-align: center;
+
+    & > img {
+        position: absolute;
+        left: $fontSize * 1.5;
+        top: 50%;
+        @include translateY(-50%);
+        width: $fontSize * 3.8;
+        height: auto;
+    }
+
+    & > span {
+        position: absolute;
+        left: $fontSize * 6;
+        top: 50%;
+        @include translateY(-50%);
+        color: #4be1f0;
+        font-size: $fontSize * 1.4;
+    }
+
+    & > a {
+        position: absolute;
+        right: $fontSize * 1.5;
+        top: 50%;
+        @include translateY(-50%);
+        padding: 5px 8px;
+        background-color: #4be1f0;
+        font-size: $fontSize * 1.4;
+        color: #fff;
+    }
+}

@@ -10,9 +10,13 @@
 
 <body>
     <section class="loading">
-        <div>
-            <i></i>
-            <p>数据载入中...</p>
+        <div class="load-origin">
+            <img src="images/loading.gif">
+            <p>正在加载中</p>
+        </div>
+        <div class="load-info">
+            <span></span>
+            <p></p>
         </div>
     </section>
     <section class="show-elec loading-data">
@@ -35,12 +39,16 @@
         <p id="trend-title">最近7日用电趋势</p>
         <div id="elec-trend"></div>
         <!-- <a href="javascript:;" id="download">点击下载校园通</a> -->
+        <div class="download-app">
+            <img src="./images/campus-logo.png">
+            <span>华中大学子的校园百事通</span>
+            <a href="javascript:;" id="download">立即下载</a>
+        </div>
     </section>
-    <script type="text/javascript" src="scripts/dist/lib/requirejs.min.js" data-main="scripts/dist/src/elec-show.js"></script>
+    <script type="text/javascript" src="scripts/dist/lib/requirejs.min.js" data-main="scripts/src/elec-show.js"></script>
 </body>
 
 </html>
-
 <!-- <script type="text/javascript" src="scripts/lib/jquery.js"></script>
 <script type="text/javascript" src="scripts/lib/echarts-all.js"></script>
 <script type="text/javascript" src="scripts/lib/sea.js"></script>

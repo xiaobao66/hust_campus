@@ -80,6 +80,8 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
                 $(this).addClass('origin-input');
                 var domArea = $("#dom-area"),
                     areaItem = $("#dom-area li");
+                document.getElementById('build').blur();
+                document.getElementById('room').blur();
 
                 areaItem.removeClass("user-choose");
                 if (domArea.css('display') === "none") {
@@ -149,6 +151,8 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
                 $(this).addClass('origin-input');
                 var domArea = $("#dom-area"),
                     areaItem = $("#dom-area li");
+                document.getElementById('build').blur();
+                document.getElementById('room').blur();
 
                 areaItem.removeClass("user-choose");
                 if (domArea.css('display') === "none") {

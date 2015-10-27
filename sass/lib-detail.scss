@@ -37,13 +37,20 @@ header {
 
 .lib-main {
     @include box-sizing(border-box);
-    position: relative;
+    position: absolute;
+    top: 46px;
+    bottom: 0;
     width: 100%;
     padding: 0 $fontSize * 1.3;
-    margin-top: $fontSize * 0.6;
+    // margin-top: $fontSize * 0.6;
+    -webkit-overflow-scrolling: touch;
     visibility: hidden;
 
     #show-table {
+    	position: absolute;
+    	left: 13px;
+    	right: 13px;
+    	bottom: 0;
     	overflow-y: scroll;
     	margin-top: $fontSize;
     }

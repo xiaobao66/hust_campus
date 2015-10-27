@@ -43,6 +43,14 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
     //             "place": "东校区分馆借还处",
     //             "index": "TP312C 848/3",
     //             "status": "在架上"
+    //         }, {
+    //             "place": "中文图书阅览室（C区2楼，3楼，5楼）",
+    //             "index": "TP312C 848/3",
+    //             "status": "馆内阅览"
+    //         }, {
+    //             "place": "中文图书阅览室（C区2楼，3楼，5楼）",
+    //             "index": "TP312C 848/3",
+    //             "status": "馆内阅览"
     //         }],
     //         "description": ""
     //     }
@@ -62,9 +70,8 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             },
             success: function(data) {
                 util.loadDetail(data.data, nodes, function() {
-                    var top = $("#show-table").offset().top,
-                        height = $(window).height();
-                    $('#show-table').height(height - top);
+                    var top = $(".book-detail").height();
+                    $('#show-table').css('top', top + 'px');
                     $(".loading").hide();
                     $('.load-origin').hide();
                     $('.lib-main').css('visibility', 'visible');
@@ -95,7 +102,13 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
             window.location.href = util.encodeURL('library-result.html', search);
         });
         initDetail(bookId, nodes);
-        // util.loadDetail(data.data, nodes);
+        // util.loadDetail(data.data, nodes, function() {
+        //     var top = $(".book-detail").height();
+        //     $('#show-table').css('top', top + 'px');
+        //     $(".loading").hide();
+        //     $('.load-origin').hide();
+        //     $('.lib-main').css('visibility', 'visible');
+        // });
         // $('.lib-main').show();
     });
 });

@@ -71,7 +71,7 @@ define(['zepto', 'echarts'], function($, echarts) {
         ctx.arc(x, y, radius, 1.5 * Math.PI, eAngle, false);
         ctx.stroke();
         parent.prepend(canvas);
-        console.log(parent.width(),parent.height());
+        // console.log(parent.width(),parent.height());
     };
 
     //日期横坐标转换
