@@ -100,5 +100,15 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             input = input.toUpperCase();
             util.showSearch(build, input, mes);
         });
+
+        $("#user-input").on('keyup', function(e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                var input = $('#user-input').val(),
+                    build = $('.change-build > span').attr('build-id');
+                input = input.toUpperCase();
+                util.showSearch(build, input, mes);
+            }
+        });
     });
 });

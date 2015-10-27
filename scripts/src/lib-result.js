@@ -112,6 +112,18 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 window.location.href = util.encodeURL('library-result.html', search);
             }
         });
+        $("#user-input").on('keyup', function(e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                var inputContent = userInput.val(),
+                    search = {
+                        keywords: inputContent
+                    };
+                if (inputContent !== '') {
+                    window.location.href = util.encodeURL('library-result.html', search);
+                }
+            }
+        });
         //返回上一级
         $('header > a').on('touchstart', function(e) {
             e.preventDefault();

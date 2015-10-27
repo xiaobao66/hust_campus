@@ -110,10 +110,10 @@ requirejs(['zepto', 'src/elec-util', 'echarts'], function($, Util, echarts) {
             // document.getElementById("elec-trend").addEventListener("touchstart", function(e) {
             //     e.preventDefault();
             // });
-            document.getElementById('download').addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=net.bingyan.hustpass";
-            });
+            // document.getElementById('download').addEventListener('touchstart', function(e) {
+            //     e.preventDefault();
+            //     window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=net.bingyan.hustpass";
+            // });
         } else {
             document.getElementById("change-dom").addEventListener("click", function(e) {
                 e.preventDefault();

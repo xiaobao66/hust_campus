@@ -2,6 +2,7 @@
 @import 'compass/css3';
 @import 'header';
 @import 'load';
+@import 'download';
 @font-face {
     font-family: 'icomoon';
     src: font-url('icomoon.eot');
@@ -94,7 +95,7 @@ header {
 
 .choose-time {
 	position: absolute;
-	bottom: 0;
+	bottom: $fontSize * 4.6;
 	width: 100%;
 	background-color: #ececec;
 	padding: $fontSize * 0.8  0;
@@ -149,7 +150,7 @@ header {
 	position: absolute;
 	width: 100%;
 	top: $fontSize * 4;
-	bottom: $fontSize * 8.6;
+	bottom: $fontSize * 13.2;
 	overflow-y: scroll;
 }
 
