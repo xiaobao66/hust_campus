@@ -11,6 +11,10 @@
     font-style: normal;
 }
 
+.download-app {
+    position: fixed;
+}
+
 .lib-main {
 	@include box-sizing(border-box);
     position: relative;

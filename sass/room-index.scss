@@ -249,6 +249,12 @@ header {
 	@include transition(all .5s);
 	@include translateY(-100%);
 
+	.placeholder {
+		position: relative;
+		height: $fontSize * 4;
+		background-color: #1fe0a7;
+	}
+
 	& > nav {
 		position: relative;
 		height: $fontSize * 4;
@@ -294,7 +300,7 @@ header {
 			outline: 0;
 			display: inline-block;
 			width: 100%;
-			height: $fontSize * 2.8;
+			height: $fontSize * 3;
 			vertical-align: middle;
 			border-radius: 5px;
 			font-size: $fontSize * 1.5;
@@ -332,7 +338,7 @@ header {
 	& > div {
 		position: absolute;
 		width: 100%;
-		top: $fontSize * 4;
+		top: $fontSize * 8;
 		bottom: 0;
 		background-color: rgba(0,0,0,0.6);
 		overflow-y: scroll;

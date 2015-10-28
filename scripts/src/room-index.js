@@ -13,7 +13,12 @@ requirejs.config({
 requirejs(['zepto', 'src/room-util'], function($, util) {
     var mes = {
             loadingFail: "服务器君失联了,请检查一下您的网络",
-            findNull: "教室号可能输错了或者是教师休息室T_T"
+            findNull: "教室号可能输错了或者是教师休息室T_T",
+            X12: "请输入教室号,例N101",
+            X5: "请输入教室号,例401",
+            D5: "请输入教室号,例110",
+            D9: "请输入教室号,例A101",
+            D12: "请输入教室号,例101"
         },
         roomData;
 
@@ -110,6 +115,8 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
         //显示查询教室界面
         $('#enter-search').tap(function(e) {
             e.preventDefault();
+            var buildId = $('.change-build > span').attr('build-id');
+            $("#user-input").attr('placeholder', mes[buildId]);
             $('.search-room').addClass('show-search');
         });
 

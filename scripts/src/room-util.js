@@ -134,6 +134,7 @@ define(['zepto'], function($) {
                 break;
             }
         }
+        // console.log(rooms);
         if (rooms[0].length) {
             needed = rooms[0];
         } else {
@@ -199,7 +200,7 @@ define(['zepto'], function($) {
                         rooms = data.AM.partB;
                         break;
                     case 3:
-                        rooms = data.AM.whole;
+                        rooms = (getArraySameElem(data.AM.partA.split(" "), data.AM.partB.split(" "))).join(" ");
                 }
                 break;
             case 2:
@@ -211,7 +212,7 @@ define(['zepto'], function($) {
                         rooms = data.PM.partB;
                         break;
                     case 3:
-                        rooms = data.PM.whole;
+                        rooms = (getArraySameElem(data.PM.partA.split(" "), data.PM.partB.split(" "))).join(" ");
                 }
                 break;
             case 3:
