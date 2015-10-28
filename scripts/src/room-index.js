@@ -22,7 +22,21 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             value;
         util.loadData(building, mes, function(data) {
             roomData = data;
-            // console.log(roomData);
+            var value = util.getNow(),
+                valueStr = value.toString(),
+                nodes = $('.choose-time span');
+            if (valueStr === '0,1,0,0') {
+                $(nodes[1]).addClass('current-time');
+            } else if (valueStr === '0,2,0,0') {
+                $(nodes[2]).addClass('current-time');
+            } else if (valueStr === '0,0,1,0') {
+                $(nodes[3]).addClass('current-time');
+            } else if (valueStr === '0,0,2,0') {
+                $(nodes[4]).addClass('current-time');
+            } else {
+                $(nodes[5]).addClass('current-time');
+            }
+            util.showRoom(value, roomData);
         });
 
         //显示教学楼选项
@@ -50,6 +64,21 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
             $('.room-main').empty();
             util.loadData(build, mes, function(data) {
                 roomData = data;
+                var value = util.getNow(),
+                    valueStr = value.toString(),
+                    nodes = $('.choose-time span');
+                if (valueStr === '0,1,0,0') {
+                    $(nodes[1]).addClass('current-time');
+                } else if (valueStr === '0,2,0,0') {
+                    $(nodes[2]).addClass('current-time');
+                } else if (valueStr === '0,0,1,0') {
+                    $(nodes[3]).addClass('current-time');
+                } else if (valueStr === '0,0,2,0') {
+                    $(nodes[4]).addClass('current-time');
+                } else {
+                    $(nodes[5]).addClass('current-time');
+                }
+                util.showRoom(value, roomData);
                 // console.log(roomData);
             });
         });

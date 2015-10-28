@@ -232,6 +232,45 @@ define(['zepto'], function($) {
         return time;
     }
 
+    //获取当前第几节课时间
+    function getNow() {
+        var date = new Date(),
+            month = date.getMonth() + 1,
+            hours = date.getHours(),
+            mins = date.getMinutes(),
+            time = 0,
+            flag = 1,
+            value = [0, 0, 0, 0];
+        time = hours + mins / 60;
+        if (month >= 5 && month <= 9) {
+            flag = 0;
+        }
+        if (time < 9.67) {
+            value[1] = 1;
+        } else if (time < 11.84) {
+            value[1] = 2;
+        } else {
+            if (flag) {
+                if (time < 15.59) {
+                    value[2] = 1;
+                } else if (time < 17.5) {
+                    value[2] = 2;
+                } else {
+                    value[3] = 1;
+                }
+            } else {
+                if (time < 16.09) {
+                    value[2] = 1;
+                } else if (time < 18.00) {
+                    value[2] = 2;
+                } else {
+                    value[3] = 1;
+                }
+            }
+        }
+        return value;
+    }
+
     //获取查询教室结果
     function showSearch(build, room, mes) {
         var date = getTime();
@@ -394,6 +433,7 @@ define(['zepto'], function($) {
         getPeriod: getPeriod,
         loadData: loadData,
         showRoom: showRoom,
-        showSearch: showSearch
+        showSearch: showSearch,
+        getNow: getNow
     };
 });
