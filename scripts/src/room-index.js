@@ -131,6 +131,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
         //获取并显示查询教室
         $('#get-search').tap(function(e) {
             e.preventDefault();
+            $("#user-input").blur();
             var input = $('#user-input').val(),
                 build = $('.change-build > span').attr('build-id');
             input = input.toUpperCase();
@@ -140,6 +141,7 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
         $("#user-input").on('keyup', function(e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
+                $("#user-input").blur();
                 var input = $('#user-input').val(),
                     build = $('.change-build > span').attr('build-id');
                 input = input.toUpperCase();
