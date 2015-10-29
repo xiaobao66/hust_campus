@@ -288,10 +288,15 @@ define(['zepto'], function($) {
                 correctRoom.push('N' + temp);
                 correctRoom.push('S' + temp);
             } else if (build === 'D9') {
-                correctRoom.push('A' + temp);
-                correctRoom.push('B' + temp);
-                correctRoom.push('C' + temp);
-                correctRoom.push('D' + temp);
+                if (parseInt(temp.substring(1)) > 3) {
+                    correctRoom.push('A' + temp);
+                    correctRoom.push('D' + temp);
+                } else {
+                    correctRoom.push('A' + temp);
+                    correctRoom.push('B' + temp);
+                    correctRoom.push('C' + temp);
+                    correctRoom.push('D' + temp);
+                }
             }
         }
         return correctRoom;
