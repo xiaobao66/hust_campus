@@ -272,10 +272,58 @@ define(['zepto'], function($) {
         return value;
     }
 
+    //修正查询结果
+    function correctSearch(build, room) {
+        var str = /^[a-zA-Z]$/,
+            temp = "";
+        correctRoom = [];
+        room = room.split(' ');
+        for (var i = 0; i < room.length; i++) {
+            if (str.test(room[i][0])) {
+                temp = room[i].substring(1);
+            } else {
+                temp = room[i];
+            }
+            if (build === 'X12') {
+                correctRoom.push('N' + temp);
+                correctRoom.push('S' + temp);
+            } else if (build === 'D9') {
+                correctRoom.push('A' + temp);
+                correctRoom.push('B' + temp);
+                correctRoom.push('C' + temp);
+                correctRoom.push('D' + temp);
+            }
+        }
+        return correctRoom;
+    }
+
     //获取查询教室结果
     function showSearch(build, room, mes) {
-        var date = getTime();
-        room = room.replace(new RegExp(/( )/g), ";");
+        var date = getTime(),
+            building;
+        if (build === 'X12' || build === 'D9') {
+            room = correctSearch(build, room);
+            room = room.join(';');
+        } else {
+            room = room.replace(new RegExp(/( )/g), ";");
+        }
+        switch (build) {
+            case 'X12':
+                building = '西十二';
+                break;
+            case 'X5':
+                building = '西五';
+                break;
+            case 'D5':
+                building = '东五';
+                break;
+            case 'D9':
+                building = '东九';
+                break;
+            case 'D12':
+                building = '东十二';
+        }
+        // console.log(room);
         $.ajax({
             url: '/classroom',
             type: 'GET',
@@ -297,7 +345,7 @@ define(['zepto'], function($) {
                 } else {
                     //显示查询到的教室
                     $('.room-result').empty();
-                    loadSearch(data.data);
+                    loadSearch(data.data, building);
                     $('.loading').hide();
                     $('.loading-origin').hide();
                 }
@@ -334,9 +382,29 @@ define(['zepto'], function($) {
     //     </div>
     // </div>
 
+    // <h2>东九</h2>
+    // <div class="result-item">
+    //     <h3>A201</h3>
+    //     <div class="table">
+    //         <div class="table-row">
+    //             <div class="table-cell info-title">空闲时间:</div>
+    //             <div class="table-cell info-show">
+    //                 <span>1-2节</span>
+    //                 <span>3-4节</span>
+    //                 <span>5-6节</span>
+    //                 <span>7-8节</span>
+    //                 <span>9-12节</span>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>
+
     //显示查询到的教室
-    function loadSearch(data) {
-        var fragment, item, h3, table, row, cell, span, row2, cell2;
+    function loadSearch(data, build) {
+        var fragment, h2, item, h3, table, row, cell, span, row2, cell2;
+        // console.log(data);
+        h2 = $(document.createElement('h2'));
+        h2.text(build).appendTo($('.room-result'));
         for (var i in data) {
             fragment = document.createDocumentFragment();
             item = $(document.createElement('div'));
@@ -375,55 +443,55 @@ define(['zepto'], function($) {
             }
             cell.appendTo(row);
             row.appendTo(table);
-            row = $(document.createElement('div'));
-            row.addClass('table-row');
-            cell = $(document.createElement('div'));
-            cell.addClass('table-cell info-title').text('占用时间:').appendTo(row);
-            cell = $(document.createElement('div'));
-            cell.addClass('table-cell info-show');
-            for (var z in data[i]) {
-                if (data[i][z] !== "") {
-                    row2 = $(document.createElement('div'));
-                    row2.addClass('table-row');
-                    cell2 = $(document.createElement('div'));
-                    cell2.addClass('table-cell class-info');
-                    switch (z) {
-                        case 'A':
-                            cell2.text('1-2节').appendTo(row2);
-                            cell2 = $(document.createElement('div'));
-                            cell2.addClass('table-cell');
-                            cell2.text(data[i][z]).appendTo(row2);
-                            break;
-                        case 'B':
-                            cell2.text('3-4节').appendTo(row2);
-                            cell2 = $(document.createElement('div'));
-                            cell2.addClass('table-cell');
-                            cell2.text(data[i][z]).appendTo(row2);
-                            break;
-                        case 'C':
-                            cell2.text('5-6节').appendTo(row2);
-                            cell2 = $(document.createElement('div'));
-                            cell2.addClass('table-cell');
-                            cell2.text(data[i][z]).appendTo(row2);
-                            break;
-                        case 'D':
-                            cell2.text('7-8节').appendTo(row2);
-                            cell2 = $(document.createElement('div'));
-                            cell2.addClass('table-cell');
-                            cell2.text(data[i][z]).appendTo(row2);
-                            break;
-                        case 'E':
-                            cell2.text('9-12节').appendTo(row2);
-                            cell2 = $(document.createElement('div'));
-                            cell2.addClass('table-cell');
-                            cell2.text(data[i][z]).appendTo(row2);
-                            break;
-                    }
-                    row2.appendTo(cell);
-                }
-            }
-            cell.appendTo(row);
-            row.appendTo(table);
+            // row = $(document.createElement('div'));
+            // row.addClass('table-row');
+            // cell = $(document.createElement('div'));
+            // cell.addClass('table-cell info-title').text('占用时间:').appendTo(row);
+            // cell = $(document.createElement('div'));
+            // cell.addClass('table-cell info-show');
+            // for (var z in data[i]) {
+            //     if (data[i][z] !== "") {
+            //         row2 = $(document.createElement('div'));
+            //         row2.addClass('table-row');
+            //         cell2 = $(document.createElement('div'));
+            //         cell2.addClass('table-cell class-info');
+            //         switch (z) {
+            //             case 'A':
+            //                 cell2.text('1-2节').appendTo(row2);
+            //                 cell2 = $(document.createElement('div'));
+            //                 cell2.addClass('table-cell');
+            //                 cell2.text(data[i][z]).appendTo(row2);
+            //                 break;
+            //             case 'B':
+            //                 cell2.text('3-4节').appendTo(row2);
+            //                 cell2 = $(document.createElement('div'));
+            //                 cell2.addClass('table-cell');
+            //                 cell2.text(data[i][z]).appendTo(row2);
+            //                 break;
+            //             case 'C':
+            //                 cell2.text('5-6节').appendTo(row2);
+            //                 cell2 = $(document.createElement('div'));
+            //                 cell2.addClass('table-cell');
+            //                 cell2.text(data[i][z]).appendTo(row2);
+            //                 break;
+            //             case 'D':
+            //                 cell2.text('7-8节').appendTo(row2);
+            //                 cell2 = $(document.createElement('div'));
+            //                 cell2.addClass('table-cell');
+            //                 cell2.text(data[i][z]).appendTo(row2);
+            //                 break;
+            //             case 'E':
+            //                 cell2.text('9-12节').appendTo(row2);
+            //                 cell2 = $(document.createElement('div'));
+            //                 cell2.addClass('table-cell');
+            //                 cell2.text(data[i][z]).appendTo(row2);
+            //                 break;
+            //         }
+            //         row2.appendTo(cell);
+            //     }
+            // }
+            // cell.appendTo(row);
+            // row.appendTo(table);
             table.appendTo(item);
             $(fragment).append(item).appendTo($('.room-result'));
         }

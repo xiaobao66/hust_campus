@@ -351,15 +351,22 @@ header {
 
 .room-result {
 	padding: $fontSize * 2 $fontSize * 1.8 0;
+	color: #fff;
+
+	& > h2 {
+		font-size: $fontSize * 3;
+		margin-bottom: $fontSize * 3;
+		font-weight: bold;
+	}
 }
 
 .result-item {
 	color: #fff;
 	padding-bottom: $fontSize;
+	margin-bottom: $fontSize * 3;
 	h3 {
-		font-size: $fontSize * 4;
-		margin-bottom: $fontSize;
-
+		font-size: $fontSize * 2;
+		margin-bottom: $fontSize * 2;
 	}
 }
 
