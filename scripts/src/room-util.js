@@ -229,6 +229,9 @@ define(['zepto'], function($) {
             year = myDate.getFullYear(),
             month = myDate.getMonth() + 1,
             day = myDate.getDate(),
+            if(day<10){
+                day = "0"+day;
+            }
             time = year + '' + month + day;
         return time;
     }
