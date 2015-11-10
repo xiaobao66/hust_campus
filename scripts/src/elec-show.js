@@ -120,5 +120,9 @@ requirejs(['zepto', 'src/elec-util', 'echarts'], function($, Util, echarts) {
                 window.location.href = "elec-index.html";
             });
         }
+
+        $("#download").tap(function() {
+            util.count("http://s95.cnzz.com/z_stat.php?id=1256730708&web_id=1256730708");
+        });
     });
 });

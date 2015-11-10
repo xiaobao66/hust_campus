@@ -116,5 +116,9 @@ requirejs(['zepto', 'src/lib-util'], function($, util) {
                 }
             }
         });
+
+        $("#download").tap(function() {
+            util.count("http://s95.cnzz.com/z_stat.php?id=1256730708&web_id=1256730708");
+        });
     });
 });

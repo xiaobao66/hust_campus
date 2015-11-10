@@ -1,4 +1,4 @@
-define(['zepto'], function($) {
+define(['zepto', 'src/util'], function($, util) {
     //加载热门书籍
     function hotBook(data, parentNode) {
         var fragment = document.createDocumentFragment(),
@@ -128,6 +128,7 @@ define(['zepto'], function($) {
         encodeURL: encodeURL,
         showErr: showErr,
         loadResult: loadResult,
-        loadDetail: loadDetail
+        loadDetail: loadDetail,
+        count: util.count
     };
 });

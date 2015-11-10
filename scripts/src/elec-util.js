@@ -1,4 +1,4 @@
-define(['zepto', 'echarts'], function($, echarts) {
+define(['zepto', 'echarts', 'src/util'], function($, echarts, Outil) {
     var Util = function() {
 
         },
@@ -86,8 +86,10 @@ define(['zepto', 'echarts'], function($, echarts) {
         return mDay + "<br>" + mMonth + "月" + mDate + "日";
     };
 
+    Util.prototype.count = Outil.count;
+
     //显示表单发送错误信息
-    Util.prototype.showErr = function (err) {
+    Util.prototype.showErr = function(err) {
         $('.load-origin').hide();
         $('.load-info > p').text(err);
         $('.load-info').show();
