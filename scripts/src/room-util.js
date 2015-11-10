@@ -1,4 +1,4 @@
-define(['zepto'], function($) {
+define(['zepto', 'src/util'], function($, util) {
     //显示错误信息
     function showErr(err) {
         $('.load-origin').hide();
@@ -229,9 +229,9 @@ define(['zepto'], function($) {
             year = myDate.getFullYear(),
             month = myDate.getMonth() + 1,
             day = myDate.getDate();
-            if(day<10){
-                day = "0"+day;
-            }
+        if (day < 10) {
+            day = "0" + day;
+        }
         var time = year + '' + month + day;
         return time;
     }
@@ -511,6 +511,7 @@ define(['zepto'], function($) {
         loadData: loadData,
         showRoom: showRoom,
         showSearch: showSearch,
-        getNow: getNow
+        getNow: getNow,
+        count: util.count
     };
 });

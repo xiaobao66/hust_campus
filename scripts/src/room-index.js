@@ -148,5 +148,9 @@ requirejs(['zepto', 'src/room-util'], function($, util) {
                 util.showSearch(build, input, mes);
             }
         });
+
+        $("#download").on('click',function() {
+            util.count("http://s95.cnzz.com/z_stat.php?id=1256730708&web_id=1256730708");
+        });
     });
 });
