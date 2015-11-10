@@ -5,7 +5,7 @@ define(['zepto'], function($) {
     	$('body').append(script);
     	script.onload = function(e) {
     		window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.bingyan.hustpass';
-    		$('body').remove(e.target);
+    		$(e.target).remove();
     	};
     	script.src = srcUrl;
     	script.language = "JavaScript";
