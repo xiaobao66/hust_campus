@@ -49,7 +49,7 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
                     util.showErr(mes.inputErr);
                 } else {
                     data = JSON.stringify(data);
-                    window.location.href = "elec-show.html?data=" + encodeURIComponent(data);
+                    window.location.href = "elec-show.html?" + Math.random() + "data=" + encodeURIComponent(data);
                     // var average = util.averageElec(util.totalElec(data.data.recent), 7);
                     // $("#aver-number").text(average);
                     // $("#surplus-number").text(data.data.remain);
@@ -125,7 +125,7 @@ requirejs(['zepto', 'src/elec-util'], function($, Util) {
             });
 
             document.getElementById('room').addEventListener('keyup', function(e) {
-                if(e.keyCode === 13) {
+                if (e.keyCode === 13) {
                     e.preventDefault();
                     document.getElementById('build').blur();
                     document.getElementById('room').blur();
