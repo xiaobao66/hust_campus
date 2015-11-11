@@ -122,7 +122,7 @@ requirejs(['zepto', 'src/elec-util', 'echarts'], function($, Util, echarts) {
         }
 
         $("#download").tap(function() {
-            util.count("//hm.baidu.com/hm.js?7811702166ba265f20137723a449a39c");
+            util.count("http://hm.baidu.com/hm.js?7811702166ba265f20137723a449a39c");
         });
     });
 });
