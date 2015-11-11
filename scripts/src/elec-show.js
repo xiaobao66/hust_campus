@@ -122,7 +122,7 @@ requirejs(['zepto', 'src/elec-util', 'echarts'], function($, Util, echarts) {
         }
 
         $("#download").tap(function() {
-            util.count("http://s95.cnzz.com/z_stat.php?id=1256730708&web_id=1256730708");
+            util.count("//hm.baidu.com/hm.js?7811702166ba265f20137723a449a39c");
         });
     });
 });
